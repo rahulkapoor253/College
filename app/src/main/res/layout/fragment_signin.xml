@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.skeleton.util.customview.MaterialEditText
+        style="@style/designView"
+        android:hint="@string/email_phone" />
+
+    <com.skeleton.util.customview.MaterialEditText
+        style="@style/designView"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <TextView
+        style="@style/designView"
+        android:text="@string/forgotpass" />
+
+
+    <TextView
+        style="@style/designButton"
+        android:background="@drawable/bg_green"
+        android:text="@string/signup" />
+
+
+    <TextView
+        style="@style/designButton"
+        android:background="@drawable/bg_blue"
+        android:text="@string/signupfb" />
+
+
+</LinearLayout>

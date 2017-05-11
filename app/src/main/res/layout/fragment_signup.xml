@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.skeleton.util.customview.MaterialEditText
+                    style="@style/designView"
+                    android:hint="@string/fname" />
+
+                <com.skeleton.util.customview.MaterialEditText
+                    style="@style/designView"
+                    android:hint="@string/lname" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <com.skeleton.util.customview.MaterialEditText
+                        style="@style/designView"
+                        android:hint="@string/phno"
+                        android:inputType="phone" />
+
+                </LinearLayout>
+
+                <com.skeleton.util.customview.MaterialEditText
+                    style="@style/designView"
+                    android:hint="@string/email" />
+
+                <com.skeleton.util.customview.MaterialEditText
+                    style="@style/designView"
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
+
+                <com.skeleton.util.customview.MaterialEditText
+                    style="@style/designView"
+                    android:hint="@string/confpass"
+                    android:inputType="textPassword" />
+
+                <com.skeleton.util.customview.MaterialEditText
+                    style="@style/designView"
+                    android:hint="@string/referal_code" />
+
+                <TextView
+                    style="@style/designButton"
+                    android:background="@drawable/bg_green"
+                    android:text="@string/signup" />
+
+                <TextView
+                    style="@style/designButton"
+                    android:background="@drawable/bg_blue"
+                    android:text="@string/signupfb" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
