@@ -49,5 +49,9 @@
     <dimen name="text_size_hint">12sp</dimen>
     <dimen name="appbarheight">260dp</dimen>
 
+    <dimen name="toolbar_text_size">20sp</dimen>
+    <dimen name="margin_top_otp">10dp</dimen>
+    <dimen name="margin_top_et">24dp</dimen>
+
 
 </resources>

@@ -67,7 +67,9 @@
 <string name="male">Male</string>
     <string name="female">Female</string>
 
-
-
+    <!--otp screen-->
+<string name="resendotp">Resend OTP</string>
+<string name="editnumber">Edit Number</string>
+<string name="otp_details">Please Enter OTP number you have\n recieved as an SMS on phone no.</string>
 
 </resources>

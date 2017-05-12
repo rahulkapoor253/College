@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_bg"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <include layout="@layout/custom_toolbar"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.3"
+            android:src="@drawable/unlocked" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/margin_top_otp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/margin_start_end"
+                android:background="@drawable/white_button"
+                android:drawableStart="@drawable/resend_o_t_p"
+                android:gravity="center"
+                android:padding="@dimen/padding"
+                android:text="@string/resendotp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_start_end"
+                android:background="@drawable/white_button"
+                android:drawableStart="@drawable/e_dit_number"
+                android:gravity="center"
+                android:padding="@dimen/padding"
+                android:text="@string/editnumber" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_top_otp"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@string/otp_details"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/otp_user_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_top_otp"
+            android:layout_weight="0.1"
+            android:text="dummy_Phone_number"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_top_otp"
+            android:layout_weight="0.1"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/otp_1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:hint="X" />
+
+            <EditText
+                android:id="@+id/otp_2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:hint="X" />
+
+            <EditText
+                android:id="@+id/otp_3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:hint="X" />
+
+            <EditText
+                android:id="@+id/otp_4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:hint="X" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1" />
+
+        <Button
+            style="@style/designButton"
+            android:background="@drawable/bg_green"
+            android:gravity="center"
+            android:text="Verify"
+            android:textAllCaps="false" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
