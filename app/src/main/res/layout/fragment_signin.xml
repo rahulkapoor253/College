@@ -5,26 +5,34 @@
     android:orientation="vertical">
 
     <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/met_signin_email"
         style="@style/designView"
         android:hint="@string/email_phone" />
 
     <com.skeleton.util.customview.MaterialEditText
+        android:id="@+id/met_signin_pass"
         style="@style/designView"
         android:hint="@string/password"
         android:inputType="textPassword" />
 
     <TextView
+        android:clickable="true"
         style="@style/designView"
+        android:textColor="@color/black"
         android:text="@string/forgotpass" />
 
 
-    <TextView
+    <Button
+        android:id="@+id/btn_signin_signup"
+        android:textAllCaps="false"
         style="@style/designButton"
         android:background="@drawable/bg_green"
         android:text="@string/signup" />
 
 
-    <TextView
+    <Button
+        android:id="@+id/btn_signin_signupfb"
+        android:textAllCaps="false"
         style="@style/designButton"
         android:background="@drawable/bg_blue"
         android:text="@string/signupfb" />

@@ -1,15 +1,23 @@
 package com.skeleton.retrofit;
 
 
+import com.skeleton.model.Example;
+
 import java.util.HashMap;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
+import static com.skeleton.retrofit.ApiInterface.SUB_URL_1;
+import static com.skeleton.retrofit.ApiInterface.SUB_URL_2;
 
 /**
  * Developer: Saurabh Verma
@@ -18,6 +26,8 @@ import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
 public interface ApiInterface {
     String UPDATE_LOCATION = "api/v1/user/updateLocation";
 
+    String SUB_URL_1 = "api/user/register";
+    String SUB_URL_2 = "api/user/login";
 
 //    /**
 //     * @param map
@@ -75,6 +85,15 @@ public interface ApiInterface {
     @POST(UPDATE_LOCATION)
     Call<CommonParams> updateLocation(@Header(AUTHORIZATION) String authorization,
                                       @FieldMap HashMap<String, String> map);
+
+    @Multipart
+    @POST(SUB_URL_1)
+    Call<Example> userSignUp(@Part HashMap<String, RequestBody> map);
+
+    @FormUrlEncoded
+    @POST(SUB_URL_2)
+    Call<Example> login(@FieldMap HashMap<String, String> map);
+
 
 }
 

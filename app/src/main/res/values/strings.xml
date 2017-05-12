@@ -58,10 +58,16 @@
 <string name="email">Email</string>
 <string name="password">Password</string>
 <string name="confpass">Confirm Password</string>
-<string name="referal_code">Referral Code</string>
+<string name="referal_code">Date Of Birth(yyyy-mm-dd)</string>
 <string name="signup">Sign Up</string>
 <string name="signupfb">Sign Up With Facebook</string>
-    <string name="email_phone">Email/Phone Number</string>
+    <string name="email_phone">Registered Email ID</string>
     <string name="forgotpass"><u><b>Forgot Password?</b></u></string>
+    <string name="gender">Gender :</string>
+<string name="male">Male</string>
+    <string name="female">Female</string>
+
+
+
 
 </resources>

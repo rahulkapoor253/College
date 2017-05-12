@@ -43,11 +43,11 @@
     <dimen name="empty_nav_view_height">25dp</dimen>
 
     <!--dimens for signup signin pages-->
-    <dimen name="padding">12dp</dimen>
-    <dimen name="margin_start_end">8dp</dimen>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="margin_start_end">6dp</dimen>
     <dimen name="text_size">16sp</dimen>
     <dimen name="text_size_hint">12sp</dimen>
-    <dimen name="appbarheight">250dp</dimen>
+    <dimen name="appbarheight">260dp</dimen>
 
 
 </resources>

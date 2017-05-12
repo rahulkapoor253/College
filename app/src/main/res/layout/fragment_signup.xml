@@ -6,6 +6,8 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/margin_start_end"
+        android:layout_marginStart="@dimen/margin_start_end"
         android:orientation="vertical">
 
         <ScrollView
@@ -15,57 +17,122 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_start_end"
                 android:orientation="vertical">
 
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civ_user_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_launcher" />
+
                 <com.skeleton.util.customview.MaterialEditText
+                    android:id="@+id/met_fname"
                     style="@style/designView"
                     android:hint="@string/fname" />
 
                 <com.skeleton.util.customview.MaterialEditText
+                    android:id="@+id/met_dob"
                     style="@style/designView"
-                    android:hint="@string/lname" />
+                    android:hint="@string/referal_code" />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="@dimen/margin_start_end"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
+                    <TextView
+                        android:id="@+id/tv_code"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.1"
+                        android:gravity="center"
+                        android:text="+91"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size" />
 
                     <com.skeleton.util.customview.MaterialEditText
-                        style="@style/designView"
+                        android:id="@+id/met_phone"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8"
+                        android:gravity="center"
                         android:hint="@string/phno"
-                        android:inputType="phone" />
+                        android:inputType="phone"
+                        android:textSize="@dimen/text_size_hint" />
 
                 </LinearLayout>
 
+
+                <RadioGroup
+                    android:id="@+id/rg_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_start_end"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.4"
+                        android:gravity="center"
+                        android:text="@string/gender"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_male"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:text="@string/male" />
+
+                    <RadioButton
+                        android:id="@+id/rb_female"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.3"
+                        android:text="@string/female" />
+
+                </RadioGroup>
+
+
                 <com.skeleton.util.customview.MaterialEditText
+                    android:id="@+id/met_email"
                     style="@style/designView"
                     android:hint="@string/email" />
 
                 <com.skeleton.util.customview.MaterialEditText
+                    android:id="@+id/met_pass"
                     style="@style/designView"
                     android:hint="@string/password"
                     android:inputType="textPassword" />
 
                 <com.skeleton.util.customview.MaterialEditText
+                    android:id="@+id/met_confpass"
                     style="@style/designView"
                     android:hint="@string/confpass"
                     android:inputType="textPassword" />
 
-                <com.skeleton.util.customview.MaterialEditText
-                    style="@style/designView"
-                    android:hint="@string/referal_code" />
-
-                <TextView
+                <Button
+                    android:id="@+id/btn_signup"
                     style="@style/designButton"
                     android:background="@drawable/bg_green"
-                    android:text="@string/signup" />
+                    android:text="@string/signup"
+                    android:textAllCaps="false" />
 
-                <TextView
+                <Button
+                    android:id="@+id/btn_signupfb"
                     style="@style/designButton"
                     android:background="@drawable/bg_blue"
-                    android:text="@string/signupfb" />
+                    android:text="@string/signupfb"
+                    android:textAllCaps="false" />
 
 
             </LinearLayout>
