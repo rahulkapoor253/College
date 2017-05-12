@@ -251,6 +251,7 @@ public class SignupFragment extends Fragment {
         rbMale = (RadioButton) view.findViewById(R.id.rb_male);
         rbFemale = (RadioButton) view.findViewById(R.id.rb_female);
         mRgGender = (RadioGroup) view.findViewById(R.id.rg_gender);
+        mUserImage = (CircleImageView) view.findViewById(R.id.civ_user_image);
 
     }
 
