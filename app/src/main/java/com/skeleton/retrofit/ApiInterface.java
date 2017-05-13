@@ -10,12 +10,16 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.PartMap;
+import retrofit2.http.Query;
 
 import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
+import static com.skeleton.retrofit.ApiInterface.OTP_VERIFY;
 import static com.skeleton.retrofit.ApiInterface.SUB_URL_1;
 import static com.skeleton.retrofit.ApiInterface.SUB_URL_2;
 
@@ -28,6 +32,7 @@ public interface ApiInterface {
 
     String SUB_URL_1 = "api/user/register";
     String SUB_URL_2 = "api/user/login";
+    String OTP_VERIFY = "api/user/getOTP";
 
 //    /**
 //     * @param map
@@ -88,11 +93,14 @@ public interface ApiInterface {
 
     @Multipart
     @POST(SUB_URL_1)
-    Call<Example> userSignUp(@Part HashMap<String, RequestBody> map);
+    Call<Example> userSignUp(@PartMap HashMap<String, RequestBody> map);
 
     @FormUrlEncoded
     @POST(SUB_URL_2)
     Call<Example> login(@FieldMap HashMap<String, String> map);
+
+    @GET(OTP_VERIFY)
+    Call<Example> verifyOTP(@Query("email") String email);
 
 
 }

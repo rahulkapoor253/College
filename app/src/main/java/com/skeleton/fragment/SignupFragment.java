@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
+import com.skeleton.activity.OTPActivity;
 import com.skeleton.model.Example;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.MultipartParams;
@@ -119,6 +120,9 @@ public class SignupFragment extends Fragment {
             @Override
             public void success(Example example) {
                 Toast.makeText(getContext(), "Success!", Toast.LENGTH_SHORT).show();
+                Intent mIntent = new Intent(getContext(), OTPActivity.class);
+                mIntent.putExtra("email", mEmail);
+                startActivity(mIntent);
 
             }
 
@@ -232,7 +236,7 @@ public class SignupFragment extends Fragment {
         mFname = metFname.getText().toString();
         mEmail = metEmail.getText().toString();
         mDOB = metDOB.getText().toString();
-        mPhone = metDOB.getText().toString();
+        mPhone = metPhone.getText().toString();
         mPass = metPass.getText().toString();
 
 

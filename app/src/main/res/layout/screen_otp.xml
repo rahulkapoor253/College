@@ -40,6 +40,8 @@
             android:weightSum="1">
 
             <TextView
+                android:id="@+id/otp_resend_otp"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/margin_start_end"
@@ -50,6 +52,8 @@
                 android:text="@string/resendotp" />
 
             <TextView
+                android:id="@+id/otp_edit_num"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/margin_start_end"
@@ -83,40 +87,15 @@
             android:text="dummy_Phone_number"
             android:textColor="@color/black" />
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/otp_num"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_top_otp"
             android:layout_weight="0.1"
-            android:weightSum="1">
-
-            <EditText
-                android:id="@+id/otp_1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:hint="X" />
-
-            <EditText
-                android:id="@+id/otp_2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:hint="X" />
-
-            <EditText
-                android:id="@+id/otp_3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:hint="X" />
-
-            <EditText
-                android:id="@+id/otp_4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:hint="X" />
-
-
-        </LinearLayout>
+            android:layout_gravity="center"
+            android:hint="XXXX"
+            android:inputType="number"
+            />
 
         <View
             android:layout_width="match_parent"
@@ -124,6 +103,7 @@
             android:layout_weight="0.1" />
 
         <Button
+            android:id="@+id/otp_btn_verify"
             style="@style/designButton"
             android:background="@drawable/bg_green"
             android:gravity="center"

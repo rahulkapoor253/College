@@ -41,7 +41,7 @@ android {
     }
     productFlavors {
         DEV {
-            buildConfigField 'String', 'BASE_URL', '" YOUR DEV URL"'
+            buildConfigField 'String', 'BASE_URL', '"http://52.38.181.185:3000/"'
             buildConfigField 'boolean', 'WATER_MARK', 'true'
         }
         QA {
@@ -60,6 +60,8 @@ android {
         }
     }
 }
+
+
 
 dependencies {
     /**
@@ -128,6 +130,13 @@ dependencies {
      * circular image view;
      */
     compile 'de.hdodenhof:circleimageview:2.1.0'
+
+    /**
+     * paperdb dependency
+     */
+    compile 'io.paperdb:paperdb:2.0'
+
+
 
 /**
  * glide dependency
