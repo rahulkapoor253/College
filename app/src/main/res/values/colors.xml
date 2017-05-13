@@ -16,4 +16,7 @@
 
     <color name="button_color_normal">@color/colorPrimary</color>
     <color name="button_color_pressed">@color/colorAccent</color>
+
+    <color name="view_color_check">#37b226</color>
+
 </resources>

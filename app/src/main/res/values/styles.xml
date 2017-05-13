@@ -59,5 +59,44 @@
         <item name="android:textSize">@dimen/text_size</item>
     </style>
 
+    <!--view styling-->
+
+    <style name="viewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">#ececec</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">1dp</item>
+        <item name="android:layout_marginEnd">2dp</item>
+    </style>
+
+    <!--quality chooser styling-->
+    <style name="chooseQuality">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_top_otp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="textViewQuality">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_start_end</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">@dimen/text_size</item>
+    </style>
+
+    <style name="profileViewStyle">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/margin_start_end</item>
+        <item name="android:background">#000000</item>
+
+    </style>
+
+
 
 </resources>

@@ -30,6 +30,7 @@ public class OTPActivity extends BaseActivity {
     String mUserEmail;
     Toolbar mToolbar;
     private TextView mToolbarTitle;
+    private Button btnSkip;
 
 
     protected void onCreate(final Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class OTPActivity extends BaseActivity {
         setContentView(R.layout.screen_otp);
 
         init();
+        btnSkip.setVisibility(View.GONE);
         mToolbarTitle.setText("Phone Number Verification");
 
 
@@ -96,7 +98,7 @@ public class OTPActivity extends BaseActivity {
         btnVerify = (Button) findViewById(R.id.otp_btn_verify);
         mToolbar = (Toolbar) findViewById(R.id.custom_toolbar);
         mToolbarTitle = (TextView) findViewById(R.id.toolbar_title);
-
+        btnSkip = (Button) findViewById(R.id.btn_skip);
 
 
     }

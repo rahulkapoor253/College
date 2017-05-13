@@ -55,21 +55,56 @@
     <string name="lname">Last Name</string>
 
     <string name="phno">Phone Number</string>
-<string name="email">Email</string>
-<string name="password">Password</string>
-<string name="confpass">Confirm Password</string>
-<string name="referal_code">Date Of Birth(yyyy-mm-dd)</string>
-<string name="signup">Sign Up</string>
-<string name="signupfb">Sign Up With Facebook</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confpass">Confirm Password</string>
+    <string name="referal_code">Date Of Birth(yyyy-mm-dd)</string>
+    <string name="signup">Sign Up</string>
+    <string name="signupfb">Sign Up With Facebook</string>
     <string name="email_phone">Registered Email ID</string>
     <string name="forgotpass"><u><b>Forgot Password?</b></u></string>
     <string name="gender">Gender :</string>
-<string name="male">Male</string>
+    <string name="male">Male</string>
     <string name="female">Female</string>
 
     <!--otp screen-->
-<string name="resendotp">Resend OTP</string>
-<string name="editnumber">Edit Number</string>
-<string name="otp_details">Please Enter OTP number you have\n recieved as an SMS on phone no.</string>
+    <string name="resendotp">Resend OTP</string>
+    <string name="editnumber">Edit Number</string>
+    <string name="otp_details">Please Enter OTP number you have\n recieved as an SMS on phone no.</string>
+
+    <!--choose quality-->
+    <string name="relationship_history">Relationship History</string>
+<string name="ethnicity">Ethnicity</string>
+<string name="religion">Religion</string>
+<string name="height">Height</string>
+<string name="body_type">Body Type</string>
+<string name="smoking">Smoking</string>
+<string name="drinking">Drinking</string>
+<string name="next">Next</string>
+    <string name="divorved">Divorced</string>
+    <string name="never_married">Never Married</string>
+    <string name="separated">Separated</string>
+    <string name="widowed">Widowed</string>
+    <string name="asian">Asian</string>
+<string name="indian">Indian</string>
+<string name="middle_eastern">Middle Eastern</string>
+    <string name="black">Black/African</string>
+<string name="others">Others</string>
+
+<string name="atheist">Atheist</string>
+<string name="buddhist">Buddhist</string>
+    <string name="hindu">Hindu</string>
+<string name="christian">Christian</string>
+<string name="muslim">Muslim</string>
+    <string name="jewish">Jewish</string>
+
+    <string name="athletic">Athletic</string>
+    <string name="avg">Average</string>
+    <string name="curvy">Curvy</string>
+    <string name="slim">Slim</string>
+
+    <string name="yes">Yes</string>
+<string name="no">No</string>
+    <string name="occasion">Occasionally</string>
 
 </resources>

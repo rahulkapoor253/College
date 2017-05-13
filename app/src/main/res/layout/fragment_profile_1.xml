@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/margin_top_otp"
+        android:layout_marginStart="@dimen/margin_top_otp"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/chooseQuality"
+            android:text="@string/relationship_history" />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/divorved" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/never_married" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/separated" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/widowed" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/chooseQuality"
+            android:text="@string/ethnicity" />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/asian" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/black" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/indian" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/middle_eastern" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/others" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+
+        <TextView
+            style="@style/chooseQuality"
+            android:text="@string/religion" />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/atheist" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/buddhist" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/hindu" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/christian" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/muslim" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/others" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+
+        <TextView
+            style="@style/chooseQuality"
+            android:text="@string/height" />
+
+
+        <TextView
+            style="@style/chooseQuality"
+            android:text="@string/body_type" />
+
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/athletic" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/avg" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/curvy" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/slim" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+
+        <TextView
+            style="@style/chooseQuality"
+            android:text="@string/smoking" />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/yes" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/no" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/occasion" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+
+        <TextView
+            style="@style/chooseQuality"
+            android:text="@string/drinking" />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/yes" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/no" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+        <TextView
+            style="@style/textViewQuality"
+            android:text="@string/occasion" />
+
+        <View style="@style/profileViewStyle"
+
+            />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_top_otp"
+            android:background="@drawable/bg_green"
+            android:gravity="center"
+            android:padding="@dimen/padding"
+            android:text="@string/next"
+            android:textColor="@android:color/white" />
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

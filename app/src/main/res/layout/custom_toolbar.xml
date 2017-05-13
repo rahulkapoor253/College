@@ -32,6 +32,19 @@
             android:layout_gravity="center"
             />
 
+        <Button
+            android:id="@+id/btn_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/margin_top_otp"
+            android:padding="3dp"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:text="Skip"
+android:background="@drawable/bg_green"            />
+
 
     </android.support.v7.widget.Toolbar>
 
