@@ -122,6 +122,7 @@ public class SignupFragment extends Fragment {
                 Toast.makeText(getContext(), "Success!", Toast.LENGTH_SHORT).show();
                 Intent mIntent = new Intent(getContext(), OTPActivity.class);
                 mIntent.putExtra("email", mEmail);
+                mIntent.putExtra("phone", mPhone);
                 startActivity(mIntent);
 
             }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/body_athletic"
+android:title="@string/athletic"
+        />
+
+    <item
+        android:id="@+id/body_avg"
+        android:title="@string/avg"
+        />
+
+    <item
+        android:id="@+id/body_curvy"
+        android:title="@string/curvy"
+        />
+
+    <item
+        android:id="@+id/body_slim"
+        android:title="@string/slim"
+        />
+
+
+</menu>

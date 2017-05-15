@@ -40,6 +40,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.TestClassLocation"></activity>
+
+        <activity android:name=".activity.OTPActivity"></activity>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"

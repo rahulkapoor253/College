@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +25,9 @@ import com.skeleton.util.dialog.CustomAlertDialog;
 public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     private static final String TAG = SplashActivity.class.getName();
     private Dialog mDialog;
+    private SharedPreferences sh_Pref;
+    private static int PRIVATE_MODE = 0;
+    private static final String IS_LOGIN = "IsLoggedIn";
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -112,7 +116,21 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     @Override
     public void onTokenReceived(final String token) {
         Log.e(TAG, token);
+        checkPreferences();
         startActivity(new Intent(this, MainActivity.class));
+    }
+
+    /**
+     * to check if the user has already logged in or not;
+     */
+    public void checkPreferences() {
+        sh_Pref = getSharedPreferences("Login", PRIVATE_MODE);
+        boolean isCheck = sh_Pref.getBoolean(IS_LOGIN, false);
+        if (isCheck) {
+            //Intent intent = new Intent(SplashActivity.this, );
+            //  startActivity(intent);
+        }
+
     }
 
     @Override

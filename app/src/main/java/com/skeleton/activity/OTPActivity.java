@@ -26,7 +26,7 @@ public class OTPActivity extends BaseActivity {
     private TextView tvUserPhone;
     private TextView tvResendOtp, tvEditNum;
     private Button btnVerify;
-    String mOTP;
+    String mOTP, mPhone;
     String mUserEmail;
     Toolbar mToolbar;
     private TextView mToolbarTitle;
@@ -42,24 +42,26 @@ public class OTPActivity extends BaseActivity {
         mToolbarTitle.setText("Phone Number Verification");
 
 
-
-
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 generateOTP();
                 Intent i = new Intent();
                 mUserEmail = i.getStringExtra("email");
+                mPhone = i.getStringExtra("phone");
+                tvUserPhone.setText(mPhone);
 
 
                 RestClient.getApiInterface().verifyOTP(mUserEmail).enqueue(new ResponseResolver<Example>(OTPActivity.this, true) {
                     @Override
                     public void success(Example example) {
-                       Data mData =  example.getData();
+                        Data mData = example.getData();
                         String UserOTP = mData.getOTP();
-                        if(mOTP.equals(UserOTP)) {
+                        if (mOTP.equals(UserOTP)) {
                             Toast.makeText(OTPActivity.this, "OTP matched, moving to home page!", Toast.LENGTH_SHORT).show();
-                            
+                            SplashActivity obj = new SplashActivity();
+                            Intent intent = new Intent(OTPActivity.this, ProfileInfoActivty.class);
+                            startActivity(intent);
 
                         }
 
