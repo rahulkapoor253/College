@@ -1,5 +1,6 @@
 package com.skeleton.fragment;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,11 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.hbb20.CountryCodePicker;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
 import com.skeleton.activity.OTPActivity;
@@ -22,8 +25,10 @@ import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.MultipartParams;
 import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
+import com.skeleton.util.Log;
 import com.skeleton.util.ValidateEditText;
 import com.skeleton.util.customview.MaterialEditText;
+import com.skeleton.util.dialog.DatePickerFragment;
 import com.skeleton.util.imagepicker.ImageChooser;
 
 import java.io.File;
@@ -33,6 +38,11 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
+
+import static com.skeleton.constant.AppConstant.KEY_MODE;
+import static com.skeleton.constant.AppConstant.REQ_OTP;
+import static com.skeleton.constant.AppConstant.REQ_SIGN_UP;
+import static com.skeleton.constant.AppConstant.SHARED_OBJ;
 
 
 /**
@@ -52,11 +62,12 @@ public class SignupFragment extends Fragment {
     private CircleImageView mUserImage;
     private int mGender;
     private File mImageFile;
+    private CountryCodePicker countryCodePicker;
     private RadioGroup mRgGender;
     private ImageChooser imageChooser;
     private RadioButton rbMale, rbFemale;
-    private String mFname, mEmail, mDOB, mPhone, mPass;
-    private String mDeviceToken = "DEVICE_OK", mUserAppVersion = "VERSION", mCountryCode = "+91", mLang = "EN", mDeviceType = "ANDROID";
+    private String mFname, mEmail, mDOB, mPhone, mPass, mCountryCode;
+    private String mDeviceToken = "DEVICE_OK", mUserAppVersion = "VERSION", mLang = "EN", mDeviceType = "ANDROID";
 
 
     @Nullable
@@ -71,6 +82,19 @@ public class SignupFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 chooseImage();
+            }
+        });
+
+        metDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        metDOB.setText(String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(dayOfMonth));
+                    }
+                });
+
             }
         });
 
@@ -113,6 +137,7 @@ public class SignupFragment extends Fragment {
                 .add("language", mLang)
                 .add("deviceType", mDeviceType)
                 .add("gender", mGender)
+                .add("countryCode", mCountryCode)
                 .build().getMap();
 
 
@@ -123,9 +148,9 @@ public class SignupFragment extends Fragment {
                 Toast.makeText(getContext(), "Success!", Toast.LENGTH_SHORT).show();
                 CommonData.saveAccessToken(example.getData().getAccessToken());
                 Intent mIntent = new Intent(getContext(), OTPActivity.class);
-                mIntent.putExtra("email", mEmail);
-                mIntent.putExtra("phone", mPhone);
-                startActivity(mIntent);
+                mIntent.putExtra(SHARED_OBJ, example.getData().getUserDetails());
+                mIntent.putExtra(KEY_MODE, REQ_SIGN_UP);
+                getActivity().startActivityForResult(mIntent, REQ_OTP);
 
             }
 
@@ -241,6 +266,9 @@ public class SignupFragment extends Fragment {
         mDOB = metDOB.getText().toString();
         mPhone = metPhone.getText().toString();
         mPass = metPass.getText().toString();
+        mCountryCode = "+" +  countryCodePicker.getSelectedCountryCode().toString();
+        Log.i("ccp", mCountryCode);
+
 
 
     }
@@ -259,6 +287,7 @@ public class SignupFragment extends Fragment {
         rbFemale = (RadioButton) view.findViewById(R.id.rb_female);
         mRgGender = (RadioGroup) view.findViewById(R.id.rg_gender);
         mUserImage = (CircleImageView) view.findViewById(R.id.civ_user_image);
+        countryCodePicker = (CountryCodePicker) view.findViewById(R.id.ccp);
 
     }
 

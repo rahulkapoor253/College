@@ -10,9 +10,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.skeleton.R;
+import com.skeleton.database.CommonData;
 import com.skeleton.model.Data;
 import com.skeleton.model.Example;
+import com.skeleton.model.UserDetails;
 import com.skeleton.retrofit.APIError;
+import com.skeleton.retrofit.CommonParams;
 import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
 
@@ -26,16 +29,25 @@ public class OTPActivity extends BaseActivity {
     private TextView tvUserPhone;
     private TextView tvResendOtp, tvEditNum;
     private Button btnVerify;
-    String mOTP, mPhone;
-    String mUserEmail;
-    Toolbar mToolbar;
+    private String mOTP, mPhone;
+    private String mUserEmail;
+    private Toolbar mToolbar;
     private TextView mToolbarTitle;
+    private UserDetails userDetails;
     private Button btnSkip;
+    private Intent i;
 
 
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_otp);
+
+        userDetails = getIntent().getParcelableExtra(SHARED_OBJ);
+        int mode = getIntent().getIntExtra(KEY_MODE, 0);
+        if (mode == REQ_SIGN_IN && userDetails.getPhoneVerified()) {
+            setResult(RESULT_OK);
+            finish();
+        }
 
         init();
         btnSkip.setVisibility(View.GONE);
@@ -45,46 +57,32 @@ public class OTPActivity extends BaseActivity {
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                generateOTP();
-                Intent i = new Intent();
-                mUserEmail = i.getStringExtra("email");
-                mPhone = i.getStringExtra("phone");
-                tvUserPhone.setText(mPhone);
+                mOTP = etotp.getText().toString();
+                CommonParams params = new CommonParams.Builder()
+                        .add(KEY_FRAGMENT_COUNTRY_CODE, userDetails.getCountryCode())
+                        .add(KEY_FRAGMENT_PHONE, userDetails.getPhoneNo())
+                        .add(KEY_FRAGMENT_OTPCODE, mOTP).build();
 
+                RestClient.getApiInterface()
+                        .verifyOtp("bearer " + CommonData.getAccessToken(), params.getMap())
+                        .enqueue(new ResponseResolver<Example>(OTPActivity.this, true) {
+                            @Override
+                            public void success(final Example example) {
+                                setResult(RESULT_OK);
+                                finish();
+                            }
 
-                RestClient.getApiInterface().verifyOTP(mUserEmail).enqueue(new ResponseResolver<Example>(OTPActivity.this, true) {
-                    @Override
-                    public void success(Example example) {
-                        Data mData = example.getData();
-                        String UserOTP = mData.getOTP();
-                        if (mOTP.equals(UserOTP)) {
-                            Toast.makeText(OTPActivity.this, "OTP matched, moving to home page!", Toast.LENGTH_SHORT).show();
-                            SplashActivity obj = new SplashActivity();
-                            Intent intent = new Intent(OTPActivity.this, ProfileInfoActivty.class);
-                            startActivity(intent);
+                            @Override
+                            public void failure(final APIError error) {
 
-                        }
-
-                    }
-
-                    @Override
-                    public void failure(APIError error) {
-
-                    }
-                });
+                            }
+                        });
 
             }
 
+
         });
 
-    }
-
-    /**
-     * this method will help us to concat otp edit text values;
-     */
-
-    private void generateOTP() {
-        mOTP = etotp.getText().toString();
     }
 
 
@@ -93,6 +91,7 @@ public class OTPActivity extends BaseActivity {
      */
     private void init() {
 
+        userDetails = getIntent().getParcelableExtra(SHARED_OBJ);
         etotp = (EditText) findViewById(R.id.otp_num);
         tvUserPhone = (TextView) findViewById(R.id.otp_user_phone);
         tvResendOtp = (TextView) findViewById(R.id.otp_resend_otp);

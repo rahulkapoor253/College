@@ -45,15 +45,13 @@
                     android:orientation="horizontal"
                     android:weightSum="1">
 
-                    <TextView
-                        android:id="@+id/tv_code"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:gravity="center"
-                        android:text="+91"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size" />
+                    <com.hbb20.CountryCodePicker
+                        android:id="@+id/ccp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                    </com.hbb20.CountryCodePicker>
 
                     <com.skeleton.util.customview.MaterialEditText
                         android:id="@+id/met_phone"

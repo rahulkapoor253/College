@@ -87,6 +87,12 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
                 && resultCode == Activity.RESULT_OK) {
             init();
         }
+        else if (requestCode == REQ_SIGN_UP) {
+            if (resultCode == Activity.RESULT_OK) {
+                finish();
+            }
+
+        }
     }
 
     /**
@@ -119,13 +125,13 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
         return true;
     }
 
+
     @Override
     public void onTokenReceived(final String token) {
         Log.e(TAG, token);
         //checkPreferences();
 
-        String mAccessToken = CommonData.getAccessToken();
-        goToActivity(mAccessToken);
+       startActivityForResult(new Intent(this, MainActivity.class), REQ_SIGN_UP);
 
     }
 

@@ -14,7 +14,7 @@ public final class CommonParams {
      *
      * @param builder object of builder class of CommonParams
      */
-    private CommonParams(final Builder builder) {
+    public CommonParams(final Builder builder) {
         this.map = builder.map;
     }
 

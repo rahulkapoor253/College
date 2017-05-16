@@ -1,5 +1,8 @@
 package com.skeleton.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,7 +12,7 @@ import java.util.List;
  * Created by rahulkapoor on 09/05/17.
  */
 
-public class UserDetails {
+public class UserDetails implements Parcelable {
 
     @SerializedName("_id")
     @Expose
@@ -65,9 +68,72 @@ public class UserDetails {
     @SerializedName("defaultAddressId")
     @Expose
     private Object defaultAddressId;
+    @SerializedName("phoneVerified")
+    private boolean phoneVerified;
+    @SerializedName("emailVerified")
+    private boolean emailVerified;
     @SerializedName("currentLocation")
     @Expose
     private CurrentLocation currentLocation;
+    @SerializedName("Orientation")
+    @Expose
+    private List<String> orientation = null;
+    @SerializedName("RelationshipHistory")
+    @Expose
+    private List<String> relationshipHistory = null;
+    @SerializedName("Ethnicity")
+    @Expose
+    private List<String> ethnicity = null;
+    @SerializedName("Religion")
+    @Expose
+    private List<String> religion = null;
+    @SerializedName("BodyType")
+    @Expose
+    private List<String> bodyType = null;
+    @SerializedName("Smoking")
+    @Expose
+    private List<String> smoking = null;
+    @SerializedName("Drinking")
+    @Expose
+    private List<String> drinking = null;
+    @SerializedName("Height")
+    @Expose
+    private List<String> height = null;
+
+
+    protected UserDetails(Parcel in) {
+        id = in.readString();
+        createdAt = in.readString();
+        updatedAt = in.readString();
+        dob = in.readString();
+        countryCode = in.readString();
+        phoneNo = in.readString();
+        email = in.readString();
+        newNumber = in.readString();
+        aboutMe = in.readString();
+        phoneVerified = in.readByte() != 0;
+        emailVerified = in.readByte() != 0;
+        orientation = in.createStringArrayList();
+        relationshipHistory = in.createStringArrayList();
+        ethnicity = in.createStringArrayList();
+        religion = in.createStringArrayList();
+        bodyType = in.createStringArrayList();
+        smoking = in.createStringArrayList();
+        drinking = in.createStringArrayList();
+        height = in.createStringArrayList();
+    }
+
+    public static final Creator<UserDetails> CREATOR = new Creator<UserDetails>() {
+        @Override
+        public UserDetails createFromParcel(Parcel in) {
+            return new UserDetails(in);
+        }
+
+        @Override
+        public UserDetails[] newArray(int size) {
+            return new UserDetails[size];
+        }
+    };
 
     /**
      * @return return
@@ -116,6 +182,20 @@ public class UserDetails {
      */
     public String getDob() {
         return dob;
+    }
+
+    /**
+     * @return true or false if phone number is verified or not
+     */
+    public boolean getPhoneVerified() {
+        return phoneVerified;
+    }
+
+    /**
+     * @return true or false if email is verified or not
+     */
+    public boolean getEmailVerified() {
+        return emailVerified;
     }
 
     /**
@@ -335,4 +415,96 @@ public class UserDetails {
         this.currentLocation = currentLocation;
     }
 
+    public List<String> getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(List<String> orientation) {
+        this.orientation = orientation;
+    }
+
+    public List<String> getRelationshipHistory() {
+        return relationshipHistory;
+    }
+
+    public void setRelationshipHistory(List<String> relationshipHistory) {
+        this.relationshipHistory = relationshipHistory;
+    }
+
+    public List<String> getEthnicity() {
+        return ethnicity;
+    }
+
+    public void setEthnicity(List<String> ethnicity) {
+        this.ethnicity = ethnicity;
+    }
+
+    public List<String> getReligion() {
+        return religion;
+    }
+
+    public void setReligion(List<String> religion) {
+        this.religion = religion;
+    }
+
+    public List<String> getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(List<String> bodyType) {
+        this.bodyType = bodyType;
+    }
+
+    public List<String> getSmoking() {
+        return smoking;
+    }
+
+    public void setSmoking(List<String> smoking) {
+        this.smoking = smoking;
+    }
+
+    public List<String> getDrinking() {
+        return drinking;
+    }
+
+    public void setDrinking(List<String> drinking) {
+        this.drinking = drinking;
+    }
+
+    public List<String> getHeight() {
+        return height;
+    }
+
+    public void setHeight(List<String> height) {
+        this.height = height;
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(createdAt);
+        dest.writeString(updatedAt);
+        dest.writeString(dob);
+        dest.writeString(countryCode);
+        dest.writeString(phoneNo);
+        dest.writeString(email);
+        dest.writeString(newNumber);
+        dest.writeString(aboutMe);
+        dest.writeByte((byte) (phoneVerified ? 1 : 0));
+        dest.writeByte((byte) (emailVerified ? 1 : 0));
+        dest.writeStringList(orientation);
+        dest.writeStringList(relationshipHistory);
+        dest.writeStringList(ethnicity);
+        dest.writeStringList(religion);
+        dest.writeStringList(bodyType);
+        dest.writeStringList(smoking);
+        dest.writeStringList(drinking);
+        dest.writeStringList(height);
+    }
 }

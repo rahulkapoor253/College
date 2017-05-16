@@ -1,5 +1,8 @@
 package com.skeleton.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -7,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by rahulkapoor on 09/05/17.
  */
 
-public class Example {
+public class Example implements Parcelable {
 
     @SerializedName("statusCode")
     @Expose
@@ -18,6 +21,22 @@ public class Example {
     @SerializedName("data")
     @Expose
     private Data data;
+
+    protected Example(Parcel in) {
+        message = in.readString();
+    }
+
+    public static final Creator<Example> CREATOR = new Creator<Example>() {
+        @Override
+        public Example createFromParcel(Parcel in) {
+            return new Example(in);
+        }
+
+        @Override
+        public Example[] newArray(int size) {
+            return new Example[size];
+        }
+    };
 
     /**
      * @return return
@@ -61,4 +80,13 @@ public class Example {
         this.data = data;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(message);
+    }
 }

@@ -19,6 +19,14 @@ public interface AppConstant {
     int REQ_CODE_PLAY_SERVICES_RESOLUTION = 16061;
     int REQ_CODE_SCREEN_OVERLAY = 10101;
 
+    int REQ_SIGN_UP = 10;
+    int REQ_SIGN_IN = 11;
+    int REQ_OTP = 12;
+    int REQ_COMPLETE_PROFILE = 13;
+
+    String SHARED_OBJ = "shared_obj";
+    String KEY_MODE = "Mode";
+
     //User signup details
     String KEY_FRAGMENT_FNAME = "firstName";
     String KEY_FRAGMENT_LNAME = "lastName";

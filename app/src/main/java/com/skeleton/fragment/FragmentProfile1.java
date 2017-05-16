@@ -1,21 +1,21 @@
 package com.skeleton.fragment;
 
-import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.PopupMenu;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.skeleton.R;
+import com.skeleton.model.Data;
+import com.skeleton.model.Example;
+import com.skeleton.retrofit.APIError;
+import com.skeleton.retrofit.ResponseResolver;
+import com.skeleton.retrofit.RestClient;
 import com.skeleton.util.customview.MaterialEditText;
 
 import java.util.List;
@@ -30,6 +30,9 @@ public class FragmentProfile1 extends BaseFragment {
     private View mView1, mView2, mView3, mView4, mView5, mView6, mView7;
     private ListView mListView;
     private MaterialEditText tvRelation, tvReligion, tvHeight, tvDrink, tvSmoke, tvEthnicity, tvBodytype;
+    private List<String> mItems;
+    private Data objData;
+    private Button btnNext;
 
     @Nullable
     @Override
@@ -38,11 +41,32 @@ public class FragmentProfile1 extends BaseFragment {
 
         init(view);
 
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+
+                FragmentManager fm = getChildFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.ll_profile_info, new FragmentProfile2());
+                ft.commit();
+
+            }
+        });
+
         mListView = (ListView) view.findViewById(R.id.listview);
+        RestClient.getApiInterface().getListData().enqueue(new ResponseResolver<Example>(getContext(), true) {
+            @Override
+            public void success(Example example) {
+                objData = example.getData();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.list_items, );
+            }
 
-        mListView.setAdapter(adapter);
+            @Override
+            public void failure(APIError error) {
+
+            }
+        });
+
 
         return view;
     }
@@ -58,38 +82,53 @@ public class FragmentProfile1 extends BaseFragment {
                 break;
             case R.id.tv_height:
 
+
                 mView2.setBackgroundResource(R.color.view_color_check);
                 break;
             case R.id.tv_body_type:
+
 
                 mView3.setBackgroundResource(R.color.view_color_check);
                 break;
             case R.id.tv_drinking:
 
+
                 mView4.setBackgroundResource(R.color.view_color_check);
                 break;
             case R.id.tv_smoking:
+
 
                 mView5.setBackgroundResource(R.color.view_color_check);
                 break;
             case R.id.tv_religion:
 
+
                 mView6.setBackgroundResource(R.color.view_color_check);
                 break;
             case R.id.tv_ethnicity:
+
 
                 mView7.setBackgroundResource(R.color.view_color_check);
                 break;
             default:
                 break;
 
-
         }
+
 
     }
 
+    private void callDialog(int title, List<String> mItems, View view) {
+
+        FragmentManager fm = getChildFragmentManager();
+
+
+    }
+
+
     private void init(final View view) {
 
+        btnNext = (Button) view.findViewById(R.id.btn_next);
         mView1 = view.findViewById(R.id.view1);
         mView2 = view.findViewById(R.id.view2);
         mView3 = view.findViewById(R.id.view3);

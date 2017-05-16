@@ -107,4 +107,6 @@
     <string name="no">No</string>
     <string name="occasion">Occasionally</string>
 
+    <string name="Button">Save and Continue</string>
+
 </resources>
