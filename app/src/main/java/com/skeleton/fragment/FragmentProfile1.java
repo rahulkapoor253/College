@@ -1,25 +1,35 @@
 package com.skeleton.fragment;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.skeleton.R;
+import com.skeleton.util.customview.MaterialEditText;
+
+import java.util.List;
 
 /**
  * Created by rahulkapoor on 13/05/17.
  */
 
-public class FragmentProfile1 extends Fragment {
+public class FragmentProfile1 extends BaseFragment {
 
-    private TextView tvRelation, tvHeight, tvBodyType, tvSmoke, tvReligion, tvEthnicity, tvDrink;
-    private PopupMenu mPopUp;
+
     private View mView1, mView2, mView3, mView4, mView5, mView6, mView7;
+    private ListView mListView;
+    private MaterialEditText tvRelation, tvReligion, tvHeight, tvDrink, tvSmoke, tvEthnicity, tvBodytype;
 
     @Nullable
     @Override
@@ -28,97 +38,58 @@ public class FragmentProfile1 extends Fragment {
 
         init(view);
 
-        tvRelation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
+        mListView = (ListView) view.findViewById(R.id.listview);
 
-                mPopUp = new PopupMenu(getContext(), tvRelation);
-                mPopUp.getMenuInflater().inflate(R.menu.relationship, mPopUp.getMenu());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.list_items, );
 
-                mPopUp.show();
-                mView1.setBackgroundResource(R.color.view_color_check);
-
-            }
-        });
-
-        tvReligion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-
-                mPopUp = new PopupMenu(getContext(), tvReligion);
-                mPopUp.getMenuInflater().inflate(R.menu.religion, mPopUp.getMenu());
-
-                mPopUp.show();
-                mView2.setBackgroundResource(R.color.view_color_check);
-
-            }
-        });
-
-        tvSmoke.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-
-                mPopUp = new PopupMenu(getContext(), tvSmoke);
-                mPopUp.getMenuInflater().inflate(R.menu.smoke_drink, mPopUp.getMenu());
-
-                mPopUp.show();
-                mView3.setBackgroundResource(R.color.view_color_check);
-
-            }
-        });
-
-        tvDrink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-
-                mPopUp = new PopupMenu(getContext(), tvDrink);
-                mPopUp.getMenuInflater().inflate(R.menu.smoke_drink, mPopUp.getMenu());
-
-                mPopUp.show();
-                mView5.setBackgroundResource(R.color.view_color_check);
-
-            }
-        });
-
-        tvEthnicity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-
-                mPopUp = new PopupMenu(getContext(), tvEthnicity);
-                mPopUp.getMenuInflater().inflate(R.menu.ethnicity, mPopUp.getMenu());
-
-                mPopUp.show();
-                mView6.setBackgroundResource(R.color.view_color_check);
-
-            }
-        });
-
-        tvBodyType.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-
-                mPopUp = new PopupMenu(getContext(), tvBodyType);
-                mPopUp.getMenuInflater().inflate(R.menu.body_type, mPopUp.getMenu());
-
-                mPopUp.show();
-                mView7.setBackgroundResource(R.color.view_color_check);
-
-            }
-        });
-
+        mListView.setAdapter(adapter);
 
         return view;
     }
 
+    @Override
+    public void onClick(final View v) {
+        super.onClick(v);
+        final int id = v.getId();
+        switch (id) {
+            case R.id.tv_relationship_history:
+
+                mView1.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_height:
+
+                mView2.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_body_type:
+
+                mView3.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_drinking:
+
+                mView4.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_smoking:
+
+                mView5.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_religion:
+
+                mView6.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_ethnicity:
+
+                mView7.setBackgroundResource(R.color.view_color_check);
+                break;
+            default:
+                break;
+
+
+        }
+
+    }
+
     private void init(final View view) {
 
-        tvRelation = (TextView) view.findViewById(R.id.tv_relationship_history);
-        tvBodyType = (TextView) view.findViewById(R.id.tv_body_type);
-        tvDrink = (TextView) view.findViewById(R.id.tv_drinking);
-        tvSmoke = (TextView) view.findViewById(R.id.tv_smoking);
-        tvReligion = (TextView) view.findViewById(R.id.tv_religion);
-        tvEthnicity = (TextView) view.findViewById(R.id.tv_ethnicity);
-        tvHeight = (TextView) view.findViewById(R.id.tv_height);
         mView1 = view.findViewById(R.id.view1);
         mView2 = view.findViewById(R.id.view2);
         mView3 = view.findViewById(R.id.view3);
@@ -126,6 +97,21 @@ public class FragmentProfile1 extends Fragment {
         mView5 = view.findViewById(R.id.view5);
         mView6 = view.findViewById(R.id.view6);
         mView7 = view.findViewById(R.id.view7);
+        tvEthnicity = (MaterialEditText) view.findViewById(R.id.tv_ethnicity);
+        tvRelation = (MaterialEditText) view.findViewById(R.id.tv_relationship_history);
+        tvReligion = (MaterialEditText) view.findViewById(R.id.tv_religion);
+        tvHeight = (MaterialEditText) view.findViewById(R.id.tv_height);
+        tvDrink = (MaterialEditText) view.findViewById(R.id.tv_drinking);
+        tvSmoke = (MaterialEditText) view.findViewById(R.id.tv_smoking);
+        tvBodytype = (MaterialEditText) view.findViewById(R.id.tv_body_type);
+
+        tvEthnicity.setOnClickListener(this);
+        tvRelation.setOnClickListener(this);
+        tvReligion.setOnClickListener(this);
+        tvHeight.setOnClickListener(this);
+        tvDrink.setOnClickListener(this);
+        tvSmoke.setOnClickListener(this);
+        tvBodytype.setOnClickListener(this);
 
     }
 

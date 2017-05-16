@@ -13,8 +13,13 @@ import android.provider.Settings;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.skeleton.R;
+import com.skeleton.database.CommonData;
 import com.skeleton.fcm.FCMTokenInterface;
 import com.skeleton.fcm.MyFirebaseInstanceIdService;
+import com.skeleton.model.Example;
+import com.skeleton.retrofit.APIError;
+import com.skeleton.retrofit.ResponseResolver;
+import com.skeleton.retrofit.RestClient;
 import com.skeleton.util.Log;
 import com.skeleton.util.Util;
 import com.skeleton.util.dialog.CustomAlertDialog;
@@ -28,6 +33,7 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     private SharedPreferences sh_Pref;
     private static int PRIVATE_MODE = 0;
     private static final String IS_LOGIN = "IsLoggedIn";
+    private Intent mIntent;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -116,8 +122,46 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     @Override
     public void onTokenReceived(final String token) {
         Log.e(TAG, token);
-        checkPreferences();
-        startActivity(new Intent(this, MainActivity.class));
+        //checkPreferences();
+
+        String mAccessToken = CommonData.getAccessToken();
+        goToActivity(mAccessToken);
+
+    }
+
+    private void goToActivity(final String accessToken) {
+
+        if(accessToken == null) {
+            mIntent = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(mIntent);
+            finish();
+        }
+
+        else {
+
+            RestClient.getApiInterface().userProfile("bearer " + CommonData.getAccessToken()).enqueue(new ResponseResolver<Example>(SplashActivity.this, true) {
+                @Override
+                public void success(Example example) {
+
+                    if(example.getData().getUserDetails().getStep1CompleteOrSkip()
+                            && example.getData().getUserDetails().getStep2CompleteOrSkip()) {
+                        startActivity(new Intent(SplashActivity.this, HomeActivty.class));
+                    }
+                    else {
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                    }
+
+                }
+
+                @Override
+                public void failure(APIError error) {
+
+                }
+            });
+
+        }
+
+
     }
 
     /**

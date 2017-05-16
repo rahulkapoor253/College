@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
 import com.skeleton.activity.OTPActivity;
+import com.skeleton.database.CommonData;
 import com.skeleton.model.Example;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.MultipartParams;
@@ -120,6 +121,7 @@ public class SignupFragment extends Fragment {
             @Override
             public void success(Example example) {
                 Toast.makeText(getContext(), "Success!", Toast.LENGTH_SHORT).show();
+                CommonData.saveAccessToken(example.getData().getAccessToken());
                 Intent mIntent = new Intent(getContext(), OTPActivity.class);
                 mIntent.putExtra("email", mEmail);
                 mIntent.putExtra("phone", mPhone);

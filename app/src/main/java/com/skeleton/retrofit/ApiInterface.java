@@ -1,6 +1,7 @@
 package com.skeleton.retrofit;
 
 
+import com.skeleton.model.Data;
 import com.skeleton.model.Example;
 
 import java.util.HashMap;
@@ -19,9 +20,11 @@ import retrofit2.http.PartMap;
 import retrofit2.http.Query;
 
 import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
+import static com.skeleton.retrofit.ApiInterface.LIST_ITEMS;
 import static com.skeleton.retrofit.ApiInterface.OTP_VERIFY;
 import static com.skeleton.retrofit.ApiInterface.SUB_URL_1;
 import static com.skeleton.retrofit.ApiInterface.SUB_URL_2;
+import static com.skeleton.retrofit.ApiInterface.VERIFY_ACCESS_TOKEN;
 
 /**
  * Developer: Saurabh Verma
@@ -33,6 +36,8 @@ public interface ApiInterface {
     String SUB_URL_1 = "api/user/register";
     String SUB_URL_2 = "api/user/login";
     String OTP_VERIFY = "api/user/getOTP";
+    String VERIFY_ACCESS_TOKEN = "api/user/getProfile";
+    String LIST_ITEMS = "api/profile/constants";
 
 //    /**
 //     * @param map
@@ -101,6 +106,12 @@ public interface ApiInterface {
 
     @GET(OTP_VERIFY)
     Call<Example> verifyOTP(@Query("email") String email);
+
+    @GET(VERIFY_ACCESS_TOKEN)
+    Call<Example> userProfile(@Header(AUTHORIZATION) String mAccessToken);
+
+    @GET(LIST_ITEMS)
+    Call<Data> getListData();
 
 
 }
