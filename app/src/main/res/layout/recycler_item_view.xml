@@ -3,14 +3,37 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/civ_list_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_centerInParent="true"
         android:layout_margin="@dimen/margin_top_otp"
         android:src="@mipmap/ic_launcher"
         />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civ_blur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/margin_top_otp"
+        />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_mark_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/margin_top_otp"
+            />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_list_item"

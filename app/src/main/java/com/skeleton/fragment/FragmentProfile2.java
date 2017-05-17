@@ -16,6 +16,7 @@ import com.skeleton.activity.HomeActivty;
 import com.skeleton.adapter.RecyclerViewAdapter;
 import com.skeleton.database.CommonData;
 import com.skeleton.model.Example;
+import com.skeleton.model.profile2.ProfileExample;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
@@ -40,9 +41,9 @@ public class FragmentProfile2 extends Fragment {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
 
 
-        RestClient.getApiInterface().getImageText("bearer " + CommonData.getAccessToken()).enqueue(new ResponseResolver<Example>(getContext(), true) {
+        RestClient.getApiInterface().getImageText("bearer " + CommonData.getAccessToken()).enqueue(new ResponseResolver<ProfileExample>(getContext(), true) {
             @Override
-            public void success(Example example) {
+            public void success(ProfileExample example) {
 
 
                 RecyclerViewAdapter adapter = new RecyclerViewAdapter(getContext(), example.getData().getCategories());

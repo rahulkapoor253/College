@@ -34,6 +34,9 @@ import com.skeleton.util.dialog.DatePickerFragment;
 import com.skeleton.util.imagepicker.ImageChooser;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 
@@ -51,7 +54,7 @@ import static com.skeleton.constant.AppConstant.SHARED_OBJ;
  * Created by rahulkapoor on 11/05/17.
  */
 
-public class SignupFragment extends Fragment {
+public class SignupFragment extends BaseFragment {
 
     private MaterialEditText metFname;
     private MaterialEditText metEmail;
@@ -86,20 +89,6 @@ public class SignupFragment extends Fragment {
                 chooseImage();
             }
         });
-
-        metDOB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        metDOB.setText(String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(dayOfMonth));
-                    }
-                });
-
-            }
-        });
-
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,6 +111,43 @@ public class SignupFragment extends Fragment {
 
 
         return view;
+    }
+
+
+    @Override
+    public void onClick(final View v) {
+        super.onClick(v);
+        final int id = v.getId();
+        switch (id) {
+
+            case R.id.met_dob:
+                DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                        String mMonth, mDateOfMonth;
+                        if (month > 9) {
+                            mMonth = String.valueOf(month + 1);
+                        } else {
+                            mMonth = "0";
+                            mMonth += String.valueOf(month + 1);
+                        }
+                        if (dayOfMonth > 9) {
+                            mDateOfMonth = String.valueOf(dayOfMonth);
+                        } else {
+                            mDateOfMonth = "0";
+                            mDateOfMonth += String.valueOf(dayOfMonth);
+                        }
+
+                        metDOB.setText(String.valueOf(year) + "-" + mMonth
+                                + "-" + mDateOfMonth);
+
+                    }
+                }).show(getChildFragmentManager(), "datePicker");
+
+
+
+        }
     }
 
     private void uploadData() {
@@ -204,6 +230,7 @@ public class SignupFragment extends Fragment {
 
     }
 
+
     private int checkGender() {
 
         if(rbMale.isChecked()) {
@@ -285,6 +312,7 @@ public class SignupFragment extends Fragment {
         metPass = (MaterialEditText) view.findViewById(R.id.met_pass);
         metDOB = (MaterialEditText) view.findViewById(R.id.met_dob);
         metPhone = (MaterialEditText) view.findViewById(R.id.met_phone);
+        metDOB.setOnClickListener(this);
         btnSignup = (Button) view.findViewById(R.id.btn_signup);
         btnSignupFb = (Button) view.findViewById(R.id.btn_signupfb);
         rbMale = (RadioButton) view.findViewById(R.id.rb_male);

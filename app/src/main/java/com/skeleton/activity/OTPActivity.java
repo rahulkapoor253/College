@@ -61,7 +61,7 @@ public class OTPActivity extends BaseActivity {
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                mOTP = etotp.getText().toString();
+                mOTP = tvUserPhone.getText().toString();
                 Log.i("otp", mOTP);
                 CommonParams params = new CommonParams.Builder()
                         .add(KEY_FRAGMENT_COUNTRY_CODE, userDetails.getCountryCode())

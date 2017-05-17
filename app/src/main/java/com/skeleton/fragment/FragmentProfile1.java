@@ -13,8 +13,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.skeleton.R;
+import com.skeleton.model.profile1.DataConstant;
 import com.skeleton.model.Example;
-import com.skeleton.model.UserDetails;
+import com.skeleton.model.profile1.ItemsChooser;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
@@ -36,7 +37,7 @@ public class FragmentProfile1 extends BaseFragment {
     private List<String> mItems;
     private Example exampleobj;
     private Button btnNext;
-    private UserDetails userDetail;
+    private ItemsChooser chooser;
 
     @Nullable
     @Override
@@ -60,10 +61,10 @@ public class FragmentProfile1 extends BaseFragment {
         });
 
         mListView = (ListView) view.findViewById(R.id.listview);
-        RestClient.getApiInterface().getListData().enqueue(new ResponseResolver<Example>(getContext(), true) {
+        RestClient.getApiInterface().getListData().enqueue(new ResponseResolver<DataConstant>(getContext(), true) {
             @Override
-            public void success(Example example) {
-                userDetail = example.getData().getUserDetails();
+            public void success(DataConstant data) {
+                chooser = data.getData();
 
             }
 
@@ -84,25 +85,25 @@ public class FragmentProfile1 extends BaseFragment {
         final int id = v.getId();
         switch (id) {
             case R.id.tv_relationship_history:
-                setDialog(R.string.relationship_history, userDetail.getRelationshipHistory(), v);
+                setDialog(R.string.relationship_history, chooser.getRelationshipHistory(), v);
                 break;
             case R.id.tv_height:
-                setDialog(R.string.height, userDetail.getHeight(), v);
+                setDialog(R.string.height, chooser.getHeight(), v);
                 break;
             case R.id.tv_body_type:
-                setDialog(R.string.body_type, userDetail.getBodyType(), v);
+                setDialog(R.string.body_type, chooser.getBodyType(), v);
                 break;
             case R.id.tv_drinking:
-                setDialog(R.string.drinking, userDetail.getDrinking(), v);
+                setDialog(R.string.drinking, chooser.getDrinking(), v);
                 break;
             case R.id.tv_smoking:
-                setDialog(R.string.smoking, userDetail.getSmoking(), v);
+                setDialog(R.string.smoking, chooser.getSmoking(), v);
                 break;
             case R.id.tv_religion:
-                setDialog(R.string.religion, userDetail.getReligion(), v);
+                setDialog(R.string.religion, chooser.getReligion(), v);
                 break;
             case R.id.tv_ethnicity:
-                setDialog(R.string.ethnicity, userDetail.getEthnicity(), v);
+                setDialog(R.string.ethnicity, chooser.getEthnicity(), v);
                 break;
             default:
                 break;

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.skeleton.R;
 import com.skeleton.model.Category;
+import com.skeleton.model.profile2.ProfileCategory;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -21,10 +22,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
+    private static int COUNT = 0;
     private Context mContext;
-    private List<Category> mCategory;
+    private List<ProfileCategory> mCategory;
 
-    public RecyclerViewAdapter(Context context, List<Category> categories) {
+    public RecyclerViewAdapter(Context context, List<ProfileCategory> categories) {
         this.mContext = context;
         this.mCategory = categories;
 
@@ -51,16 +53,55 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView tvLabel;
         private CircleImageView civImage;
+        private CircleImageView civBlur;
+        private CircleImageView civMark;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
+            itemView.setOnClickListener(this);
+
             tvLabel = (TextView) itemView.findViewById(R.id.tv_list_item);
             civImage = (CircleImageView) itemView.findViewById(R.id.civ_list_item);
+            civBlur = (CircleImageView) itemView.findViewById(R.id.civ_blur);
+            civMark = (CircleImageView) itemView.findViewById(R.id.civ_mark_item);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            int pos = getAdapterPosition();
+
+            if(COUNT<5) {
+                if (civMark.getDrawable() == null) {
+                   civMark.setImageResource(R.drawable.check_mark);
+                   civBlur.setImageResource(R.color.translucent);
+                    COUNT++;
+                }
+                else if (civMark.getDrawable() != null) {
+                    civMark.setImageDrawable(null);
+                    civBlur.setImageDrawable(null);
+                    COUNT--;
+                }
+
+            }
+            else {
+                if(civMark.getDrawable() != null ) {
+
+                    civMark.setImageDrawable(null);
+                    civBlur.setImageDrawable(null);
+                    COUNT--;
+                }
+
+
+            }
+
+
+
 
         }
     }
