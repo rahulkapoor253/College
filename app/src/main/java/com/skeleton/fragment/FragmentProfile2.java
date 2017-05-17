@@ -1,5 +1,6 @@
 package com.skeleton.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.skeleton.R;
+import com.skeleton.activity.HomeActivty;
 import com.skeleton.adapter.RecyclerViewAdapter;
 import com.skeleton.database.CommonData;
 import com.skeleton.model.Example;
@@ -53,6 +55,16 @@ public class FragmentProfile2 extends Fragment {
 
             @Override
             public void failure(APIError error) {
+
+            }
+        });
+
+
+        btnSaveCont.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Intent intent = new Intent(getContext(), HomeActivty.class);
+                startActivity(intent);
 
             }
         });

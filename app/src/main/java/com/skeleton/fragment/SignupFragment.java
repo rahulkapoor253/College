@@ -19,6 +19,7 @@ import com.hbb20.CountryCodePicker;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
 import com.skeleton.activity.OTPActivity;
+import com.skeleton.activity.ProfileInfoActivty;
 import com.skeleton.database.CommonData;
 import com.skeleton.model.Example;
 import com.skeleton.retrofit.APIError;
@@ -151,6 +152,9 @@ public class SignupFragment extends Fragment {
                 mIntent.putExtra(SHARED_OBJ, example.getData().getUserDetails());
                 mIntent.putExtra(KEY_MODE, REQ_SIGN_UP);
                 getActivity().startActivityForResult(mIntent, REQ_OTP);
+
+                mIntent = new Intent(getContext(), ProfileInfoActivty.class);
+                startActivity(mIntent);
 
             }
 

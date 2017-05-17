@@ -9,14 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.skeleton.R;
-import com.skeleton.model.Data;
 import com.skeleton.model.Example;
+import com.skeleton.model.UserDetails;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
 import com.skeleton.util.customview.MaterialEditText;
+import com.skeleton.util.dialog.CustomDialog;
 
 import java.util.List;
 
@@ -31,7 +33,7 @@ public class FragmentProfile1 extends BaseFragment {
     private ListView mListView;
     private MaterialEditText tvRelation, tvReligion, tvHeight, tvDrink, tvSmoke, tvEthnicity, tvBodytype;
     private List<String> mItems;
-    private Data objData;
+    private UserDetails userDetail;
     private Button btnNext;
 
     @Nullable
@@ -57,13 +59,15 @@ public class FragmentProfile1 extends BaseFragment {
         RestClient.getApiInterface().getListData().enqueue(new ResponseResolver<Example>(getContext(), true) {
             @Override
             public void success(Example example) {
-                objData = example.getData();
+                userDetail = example.getData().getUserDetails();
+
 
             }
 
             @Override
             public void failure(APIError error) {
 
+                Toast.makeText(getContext(), "failure in fetching list of qualities!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -77,38 +81,25 @@ public class FragmentProfile1 extends BaseFragment {
         final int id = v.getId();
         switch (id) {
             case R.id.tv_relationship_history:
-
-                mView1.setBackgroundResource(R.color.view_color_check);
+                setDialog(R.string.relationship_history, userDetail.getRelationshipHistory(), v);
                 break;
             case R.id.tv_height:
-
-
-                mView2.setBackgroundResource(R.color.view_color_check);
+                setDialog(R.string.height, userDetail.getHeight(), v);
                 break;
             case R.id.tv_body_type:
-
-
-                mView3.setBackgroundResource(R.color.view_color_check);
+                setDialog(R.string.body_type, userDetail.getBodyType(), v);
                 break;
             case R.id.tv_drinking:
-
-
-                mView4.setBackgroundResource(R.color.view_color_check);
+                setDialog(R.string.drinking, userDetail.getDrinking(), v);
                 break;
             case R.id.tv_smoking:
-
-
-                mView5.setBackgroundResource(R.color.view_color_check);
+                setDialog(R.string.smoking, userDetail.getSmoking(), v);
                 break;
             case R.id.tv_religion:
-
-
-                mView6.setBackgroundResource(R.color.view_color_check);
+                setDialog(R.string.religion, userDetail.getReligion(), v);
                 break;
             case R.id.tv_ethnicity:
-
-
-                mView7.setBackgroundResource(R.color.view_color_check);
+                setDialog(R.string.ethnicity, userDetail.getEthnicity(), v);
                 break;
             default:
                 break;
@@ -125,6 +116,52 @@ public class FragmentProfile1 extends BaseFragment {
 
     }
 
+    private void setDialog(final int title, final List<String> list, final View v) {
+
+        FragmentManager fm = getChildFragmentManager();
+        CustomDialog.newInstance(getString(title),
+                list, new CustomDialog.ItemClicked() {
+                    @Override
+                    public void sendText(final String text, final int viewId) {
+                        ((MaterialEditText) v).setText(text);
+                        setViewColor(((MaterialEditText) v).getId());
+                    }
+                }).show(fm, "dialog");
+
+
+    }
+
+    private void setViewColor(final int id) {
+
+        switch (id) {
+            case R.id.tv_relationship_history:
+                mView1.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_height:
+                mView2.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_body_type:
+                mView3.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_drinking:
+                mView4.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_smoking:
+                mView5.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_religion:
+                mView6.setBackgroundResource(R.color.view_color_check);
+                break;
+            case R.id.tv_ethnicity:
+                mView7.setBackgroundResource(R.color.view_color_check);
+                break;
+            default:
+                break;
+
+        }
+
+    }
+
 
     private void init(final View view) {
 
@@ -136,6 +173,7 @@ public class FragmentProfile1 extends BaseFragment {
         mView5 = view.findViewById(R.id.view5);
         mView6 = view.findViewById(R.id.view6);
         mView7 = view.findViewById(R.id.view7);
+
         tvEthnicity = (MaterialEditText) view.findViewById(R.id.tv_ethnicity);
         tvRelation = (MaterialEditText) view.findViewById(R.id.tv_relationship_history);
         tvReligion = (MaterialEditText) view.findViewById(R.id.tv_religion);
