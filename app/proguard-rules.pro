@@ -30,6 +30,9 @@
 
 -dontwarn okio.**
 
+#picasso
+-dontwarn com.squareup.okhttp.**
+
 #paper Db
 #-keep class com.skeleton.model.** { *; }
 

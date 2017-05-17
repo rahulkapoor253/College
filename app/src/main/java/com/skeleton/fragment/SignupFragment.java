@@ -22,6 +22,7 @@ import com.skeleton.activity.OTPActivity;
 import com.skeleton.activity.ProfileInfoActivty;
 import com.skeleton.database.CommonData;
 import com.skeleton.model.Example;
+import com.skeleton.model.UserDetails;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.MultipartParams;
 import com.skeleton.retrofit.ResponseResolver;
@@ -153,8 +154,6 @@ public class SignupFragment extends Fragment {
                 mIntent.putExtra(KEY_MODE, REQ_SIGN_UP);
                 getActivity().startActivityForResult(mIntent, REQ_OTP);
 
-                mIntent = new Intent(getContext(), ProfileInfoActivty.class);
-                startActivity(mIntent);
 
             }
 
@@ -259,6 +258,7 @@ public class SignupFragment extends Fragment {
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         imageChooser.onActivityResult(requestCode, resultCode, data);
+
 
     }
 

@@ -18,6 +18,7 @@ import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.CommonParams;
 import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
+import com.skeleton.util.Log;
 
 /**
  * Created by rahulkapoor on 12/05/17.
@@ -53,11 +54,15 @@ public class OTPActivity extends BaseActivity {
         btnSkip.setVisibility(View.GONE);
         mToolbarTitle.setText("Phone Number Verification");
 
+        etotp.setText(userDetails.getPhoneNo());
+
+
 
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 mOTP = etotp.getText().toString();
+                Log.i("otp", mOTP);
                 CommonParams params = new CommonParams.Builder()
                         .add(KEY_FRAGMENT_COUNTRY_CODE, userDetails.getCountryCode())
                         .add(KEY_FRAGMENT_PHONE, userDetails.getPhoneNo())

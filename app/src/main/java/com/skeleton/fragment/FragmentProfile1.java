@@ -1,5 +1,6 @@
 package com.skeleton.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
@@ -33,8 +34,9 @@ public class FragmentProfile1 extends BaseFragment {
     private ListView mListView;
     private MaterialEditText tvRelation, tvReligion, tvHeight, tvDrink, tvSmoke, tvEthnicity, tvBodytype;
     private List<String> mItems;
-    private UserDetails userDetail;
+    private Example exampleobj;
     private Button btnNext;
+    private UserDetails userDetail;
 
     @Nullable
     @Override
@@ -42,6 +44,8 @@ public class FragmentProfile1 extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_profile_1, container, false);
 
         init(view);
+        Intent intent = getActivity().getIntent();
+        exampleobj = intent.getParcelableExtra(SHARED_OBJ);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +64,6 @@ public class FragmentProfile1 extends BaseFragment {
             @Override
             public void success(Example example) {
                 userDetail = example.getData().getUserDetails();
-
 
             }
 

@@ -75,6 +75,9 @@ public class UserDetails implements Parcelable {
     @SerializedName("currentLocation")
     @Expose
     private CurrentLocation currentLocation;
+
+
+
     @SerializedName("Orientation")
     @Expose
     private List<String> orientation = null;
@@ -100,7 +103,6 @@ public class UserDetails implements Parcelable {
     @Expose
     private List<String> height = null;
 
-
     protected UserDetails(Parcel in) {
         id = in.readString();
         createdAt = in.readString();
@@ -121,6 +123,34 @@ public class UserDetails implements Parcelable {
         smoking = in.createStringArrayList();
         drinking = in.createStringArrayList();
         height = in.createStringArrayList();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(createdAt);
+        dest.writeString(updatedAt);
+        dest.writeString(dob);
+        dest.writeString(countryCode);
+        dest.writeString(phoneNo);
+        dest.writeString(email);
+        dest.writeString(newNumber);
+        dest.writeString(aboutMe);
+        dest.writeByte((byte) (phoneVerified ? 1 : 0));
+        dest.writeByte((byte) (emailVerified ? 1 : 0));
+        dest.writeStringList(orientation);
+        dest.writeStringList(relationshipHistory);
+        dest.writeStringList(ethnicity);
+        dest.writeStringList(religion);
+        dest.writeStringList(bodyType);
+        dest.writeStringList(smoking);
+        dest.writeStringList(drinking);
+        dest.writeStringList(height);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<UserDetails> CREATOR = new Creator<UserDetails>() {
@@ -480,31 +510,7 @@ public class UserDetails implements Parcelable {
     }
 
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
-        dest.writeString(createdAt);
-        dest.writeString(updatedAt);
-        dest.writeString(dob);
-        dest.writeString(countryCode);
-        dest.writeString(phoneNo);
-        dest.writeString(email);
-        dest.writeString(newNumber);
-        dest.writeString(aboutMe);
-        dest.writeByte((byte) (phoneVerified ? 1 : 0));
-        dest.writeByte((byte) (emailVerified ? 1 : 0));
-        dest.writeStringList(orientation);
-        dest.writeStringList(relationshipHistory);
-        dest.writeStringList(ethnicity);
-        dest.writeStringList(religion);
-        dest.writeStringList(bodyType);
-        dest.writeStringList(smoking);
-        dest.writeStringList(drinking);
-        dest.writeStringList(height);
-    }
+
+
 }
