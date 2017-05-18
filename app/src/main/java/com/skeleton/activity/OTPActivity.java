@@ -54,14 +54,14 @@ public class OTPActivity extends BaseActivity {
         btnSkip.setVisibility(View.GONE);
         mToolbarTitle.setText("Phone Number Verification");
 
-        etotp.setText(userDetails.getPhoneNo());
+        tvUserPhone.setText(userDetails.getPhoneNo());
 
 
 
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                mOTP = tvUserPhone.getText().toString();
+                mOTP = etotp.getText().toString();
                 Log.i("otp", mOTP);
                 CommonParams params = new CommonParams.Builder()
                         .add(KEY_FRAGMENT_COUNTRY_CODE, userDetails.getCountryCode())
@@ -98,7 +98,7 @@ public class OTPActivity extends BaseActivity {
 
         userDetails = getIntent().getParcelableExtra(SHARED_OBJ);
         etotp = (EditText) findViewById(R.id.otp_num);
-        tvUserPhone = (TextView) findViewById(R.id.otp_user_phone);
+        tvUserPhone = (TextView) findViewById(R.id.tv_user_phone);
         tvResendOtp = (TextView) findViewById(R.id.otp_resend_otp);
         tvEditNum = (TextView) findViewById(R.id.otp_edit_num);
         btnVerify = (Button) findViewById(R.id.otp_btn_verify);

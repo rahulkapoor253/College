@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:weightSum="1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_margin="@dimen/margin_top_otp"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <LinearLayout
         android:id="@+id/ll_view_steps"
@@ -36,14 +37,13 @@
             style="@style/viewStyle" />
 
 
-
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_weight="0.8"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="0.8">
 
 
     </android.support.v7.widget.RecyclerView>
@@ -53,16 +53,15 @@
         android:id="@+id/btn_save_cont"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:layout_marginTop="@dimen/margin_top_et"
         android:layout_marginEnd="@dimen/margin_top_et"
         android:layout_marginStart="@dimen/margin_top_et"
+        android:layout_marginTop="@dimen/margin_top_et"
+        android:layout_weight="0.1"
         android:background="@drawable/bg_green"
         android:text="@string/Button"
-        android:textColor="@android:color/white"
         android:textAllCaps="false"
-        android:textSize="@dimen/text_size"
-        />
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size" />
 
 
 </LinearLayout>

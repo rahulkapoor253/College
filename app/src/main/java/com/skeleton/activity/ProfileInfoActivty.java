@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.skeleton.R;
 import com.skeleton.fragment.FragmentProfile1;
+import com.skeleton.fragment.FragmentProfile2;
 import com.skeleton.model.UserDetails;
 
 public class ProfileInfoActivty extends BaseActivity {
@@ -43,9 +44,18 @@ public class ProfileInfoActivty extends BaseActivity {
 
     }
 
+    public void fragment2Calling() {
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.ll_profile_info, new FragmentProfile2());
+        ft.commit();
+
+    }
+
     private void fragmentCalling() {
 
-        getIntent().putExtra(SHARED_OBJ, details);
+        //getIntent().putExtra(SHARED_OBJ, details);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.ll_profile_info, new FragmentProfile1());
@@ -53,15 +63,16 @@ public class ProfileInfoActivty extends BaseActivity {
 
     }
 
-    private void init() {
+    public void init() {
 
         mToolbar = (Toolbar) findViewById(R.id.custom_toolbar);
         mTitle = (TextView) findViewById(R.id.toolbar_title);
         mLinearLayout = (LinearLayout) findViewById(R.id.ll_profile_info);
         btnSkip = (Button) findViewById(R.id.btn_skip);
-        details = intent.getParcelableExtra(SHARED_OBJ);
+       // details = intent.getParcelableExtra(SHARED_OBJ);
 
     }
+
 
 
 }

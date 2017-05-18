@@ -24,7 +24,7 @@ public class CustomDialog extends DialogFragment implements AdapterView.OnItemCl
 
     private String mTitle;
     private ListView listView;
-    private static ArrayList<String> mItems;
+    private ArrayList<String> mItems;
     private ItemClicked mCallback;
     private TextView tvDialogTitle;
 
@@ -41,7 +41,7 @@ public class CustomDialog extends DialogFragment implements AdapterView.OnItemCl
         frag.setListener(callback);
         final Bundle bundle = new Bundle();
         bundle.putString("title", title);
-        bundle.putStringArrayList("list", (ArrayList<String>) mItems);
+        bundle.putStringArrayList("list", (ArrayList<String>) list);
         frag.setArguments(bundle);
         return frag;
     }
@@ -56,7 +56,6 @@ public class CustomDialog extends DialogFragment implements AdapterView.OnItemCl
         listView = (ListView) view.findViewById(R.id.listview);
         tvDialogTitle = (TextView) view.findViewById(R.id.tvdialog);
         tvDialogTitle.setText(getArguments().getString("title"));
-
 
         return view;
     }

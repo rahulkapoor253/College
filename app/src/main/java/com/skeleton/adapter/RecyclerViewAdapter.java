@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.skeleton.R;
-import com.skeleton.model.Category;
+import com.skeleton.fragment.FragmentProfile2;
 import com.skeleton.model.profile2.ProfileCategory;
-import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -25,16 +25,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private static int COUNT = 0;
     private Context mContext;
     private List<ProfileCategory> mCategory;
+    private FragmentProfile2 frag;
+    private ArrayList<View> arrayList = new ArrayList<>();
 
-    public RecyclerViewAdapter(Context context, List<ProfileCategory> categories) {
+    public RecyclerViewAdapter(Context context, List<ProfileCategory> categories, FragmentProfile2 fragmentProfile2) {
+
         this.mContext = context;
         this.mCategory = categories;
+        this.frag = fragmentProfile2;
 
     }
 
     @Override
     public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_view, parent, false);
+
+        arrayList.add(frag.mView1);
+        arrayList.add(frag.mView2);
+        arrayList.add(frag.mView3);
+        arrayList.add(frag.mView4);
+        arrayList.add(frag.mView5);
 
         return new ViewHolder(view);
     }
@@ -43,7 +53,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(RecyclerViewAdapter.ViewHolder holder, int position) {
 
         holder.tvLabel.setText(mCategory.get(position).getName());
-        Picasso.with(mContext).load(mCategory.get(position).getPicURL().getThumbnail()).into(holder.civImage);
+        //Picasso.with(mContext).load(mCategory.get(position).getPicURL().getThumbnail()).into(holder.civImage);
 
     }
 
@@ -76,22 +86,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void onClick(View v) {
             int pos = getAdapterPosition();
 
-            if(COUNT<5) {
+            if (COUNT < 5) {
                 if (civMark.getDrawable() == null) {
-                   civMark.setImageResource(R.drawable.check_mark);
-                   civBlur.setImageResource(R.color.translucent);
+                    arrayList.get(COUNT).setBackgroundResource(R.color.view_color_check);
+                    civMark.setImageResource(R.drawable.check_mark);
+                    civBlur.setImageResource(R.color.translucent);
                     COUNT++;
-                }
-                else if (civMark.getDrawable() != null) {
+                } else if (civMark.getDrawable() != null) {
+                    arrayList.get(COUNT).setBackgroundResource(R.color.view_color_check_remove);
                     civMark.setImageDrawable(null);
                     civBlur.setImageDrawable(null);
                     COUNT--;
                 }
 
-            }
-            else {
-                if(civMark.getDrawable() != null ) {
-
+            } else {
+                if (civMark.getDrawable() != null) {
+                    arrayList.get(COUNT).setBackgroundResource(R.color.view_color_check_remove);
                     civMark.setImageDrawable(null);
                     civBlur.setImageDrawable(null);
                     COUNT--;
@@ -99,8 +109,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
             }
-
-
 
 
         }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.skeleton.R;
 import com.skeleton.activity.OTPActivity;
 import com.skeleton.activity.ProfileInfoActivty;
+import com.skeleton.database.CommonData;
 import com.skeleton.model.Example;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.CommonParams;
@@ -72,8 +73,8 @@ public class SigninFragment extends BaseFragment {
                         public void success(Example example) {
 
                             Toast.makeText(getContext(), "success!", Toast.LENGTH_SHORT).show();
+                            CommonData.saveAccessToken(example.getData().getAccessToken());
                             mExample = example;
-
                             final Intent intent = new Intent(getActivity(), OTPActivity.class);
                             intent.putExtra(SHARED_OBJ, mExample.getData().getUserDetails());
                             intent.putExtra(KEY_MODE, REQ_SIGN_IN);

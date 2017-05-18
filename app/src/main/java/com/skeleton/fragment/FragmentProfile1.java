@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.skeleton.R;
+import com.skeleton.activity.ProfileInfoActivty;
 import com.skeleton.model.profile1.DataConstant;
 import com.skeleton.model.Example;
 import com.skeleton.model.profile1.ItemsChooser;
@@ -35,7 +36,6 @@ public class FragmentProfile1 extends BaseFragment {
     private ListView mListView;
     private MaterialEditText tvRelation, tvReligion, tvHeight, tvDrink, tvSmoke, tvEthnicity, tvBodytype;
     private List<String> mItems;
-    private Example exampleobj;
     private Button btnNext;
     private ItemsChooser chooser;
 
@@ -46,16 +46,12 @@ public class FragmentProfile1 extends BaseFragment {
 
         init(view);
         Intent intent = getActivity().getIntent();
-        exampleobj = intent.getParcelableExtra(SHARED_OBJ);
+        //exampleobj = intent.getParcelableExtra(SHARED_OBJ);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-
-                FragmentManager fm = getChildFragmentManager();
-                FragmentTransaction ft = fm.beginTransaction();
-                ft.replace(R.id.ll_profile_info, new FragmentProfile2());
-                ft.commit();
+                ((ProfileInfoActivty)getActivity()).fragment2Calling();
 
             }
         });
@@ -87,23 +83,23 @@ public class FragmentProfile1 extends BaseFragment {
             case R.id.tv_relationship_history:
                 setDialog(R.string.relationship_history, chooser.getRelationshipHistory(), v);
                 break;
+            case R.id.tv_ethnicity:
+                setDialog(R.string.ethnicity, chooser.getEthnicity(), v);
+                break;
+            case R.id.tv_religion:
+                setDialog(R.string.religion, chooser.getReligion(), v);
+                break;
             case R.id.tv_height:
                 setDialog(R.string.height, chooser.getHeight(), v);
                 break;
             case R.id.tv_body_type:
                 setDialog(R.string.body_type, chooser.getBodyType(), v);
                 break;
-            case R.id.tv_drinking:
-                setDialog(R.string.drinking, chooser.getDrinking(), v);
-                break;
             case R.id.tv_smoking:
                 setDialog(R.string.smoking, chooser.getSmoking(), v);
                 break;
-            case R.id.tv_religion:
-                setDialog(R.string.religion, chooser.getReligion(), v);
-                break;
-            case R.id.tv_ethnicity:
-                setDialog(R.string.ethnicity, chooser.getEthnicity(), v);
+            case R.id.tv_drinking:
+                setDialog(R.string.drinking, chooser.getDrinking(), v);
                 break;
             default:
                 break;
@@ -141,22 +137,22 @@ public class FragmentProfile1 extends BaseFragment {
             case R.id.tv_relationship_history:
                 mView1.setBackgroundResource(R.color.view_color_check);
                 break;
-            case R.id.tv_height:
+            case R.id.tv_ethnicity:
                 mView2.setBackgroundResource(R.color.view_color_check);
                 break;
-            case R.id.tv_body_type:
+            case R.id.tv_religion:
                 mView3.setBackgroundResource(R.color.view_color_check);
                 break;
-            case R.id.tv_drinking:
+            case R.id.tv_height:
                 mView4.setBackgroundResource(R.color.view_color_check);
                 break;
-            case R.id.tv_smoking:
+            case R.id.tv_body_type:
                 mView5.setBackgroundResource(R.color.view_color_check);
                 break;
-            case R.id.tv_religion:
+            case R.id.tv_smoking:
                 mView6.setBackgroundResource(R.color.view_color_check);
                 break;
-            case R.id.tv_ethnicity:
+            case R.id.tv_drinking:
                 mView7.setBackgroundResource(R.color.view_color_check);
                 break;
             default:

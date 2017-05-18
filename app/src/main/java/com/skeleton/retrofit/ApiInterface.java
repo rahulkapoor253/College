@@ -17,6 +17,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.PartMap;
+import retrofit2.http.Query;
 
 import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
 
@@ -116,7 +117,7 @@ public interface ApiInterface {
     Call<DataConstant> getListData();
 
     @GET(IMAGE_TEXT_ACCESS)
-    Call<ProfileExample> getImageText(@Header(AUTHORIZATION) String mAccessToken);
+    Call<ProfileExample> getImageText(@Header(AUTHORIZATION) String mAccessToken, @Query("requestType") String request);
 
 
 }
