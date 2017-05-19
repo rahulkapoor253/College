@@ -76,8 +76,11 @@ public class UserDetails implements Parcelable {
     @Expose
     private CurrentLocation currentLocation;
 
-
-    protected UserDetails(Parcel in) {
+    /**
+     *
+     * @param in in
+     */
+    protected UserDetails(final Parcel in) {
         id = in.readString();
         createdAt = in.readString();
         updatedAt = in.readString();
@@ -91,14 +94,27 @@ public class UserDetails implements Parcelable {
         emailVerified = in.readByte() != 0;
     }
 
+    /**
+     * creator
+     */
     public static final Creator<UserDetails> CREATOR = new Creator<UserDetails>() {
+        /**
+         *
+         * @param in in
+         * @return return
+         */
         @Override
-        public UserDetails createFromParcel(Parcel in) {
+        public UserDetails createFromParcel(final Parcel in) {
             return new UserDetails(in);
         }
 
+        /**
+         *
+         * @param size size
+         * @return return
+         */
         @Override
-        public UserDetails[] newArray(int size) {
+        public UserDetails[] newArray(final int size) {
             return new UserDetails[size];
         }
     };
@@ -383,14 +399,20 @@ public class UserDetails implements Parcelable {
         this.currentLocation = currentLocation;
     }
 
-
+    /**
+     * @return describe contents;
+     */
     @Override
     public int describeContents() {
         return 0;
     }
 
+    /**
+     * @param dest  dest;
+     * @param flags flags;
+     */
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(final Parcel dest, final int flags) {
         dest.writeString(id);
         dest.writeString(createdAt);
         dest.writeString(updatedAt);

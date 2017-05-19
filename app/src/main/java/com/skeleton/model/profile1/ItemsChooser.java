@@ -36,67 +36,115 @@ public class ItemsChooser {
     @Expose
     private List<String> height = null;
 
+    /**
+     * @return return orientation;
+     */
     public List<String> getOrientation() {
         return orientation;
     }
 
-    public void setOrientation(List<String> orientation) {
+    /**
+     * @param orientation set orientation;
+     */
+    public void setOrientation(final List<String> orientation) {
         this.orientation = orientation;
     }
 
+    /**
+     * @return relationship history;
+     */
     public List<String> getRelationshipHistory() {
         return relationshipHistory;
     }
 
-    public void setRelationshipHistory(List<String> relationshipHistory) {
+    /**
+     * @param relationshipHistory set relationshiphistory;
+     */
+    public void setRelationshipHistory(final List<String> relationshipHistory) {
         this.relationshipHistory = relationshipHistory;
     }
 
+    /**
+     * @return ethnicity;
+     */
     public List<String> getEthnicity() {
         return ethnicity;
     }
 
-    public void setEthnicity(List<String> ethnicity) {
+    /**
+     * @param ethnicity set ethnicity;
+     */
+    public void setEthnicity(final List<String> ethnicity) {
         this.ethnicity = ethnicity;
     }
 
+    /**
+     * @return religion;
+     */
     public List<String> getReligion() {
         return religion;
     }
 
-    public void setReligion(List<String> religion) {
+    /**
+     * @param religion
+     */
+    public void setReligion(final List<String> religion) {
         this.religion = religion;
     }
 
+    /**
+     * @return bodytype;
+     */
     public List<String> getBodyType() {
         return bodyType;
     }
 
-    public void setBodyType(List<String> bodyType) {
+    /**
+     * @param bodyType set bodyType;
+     */
+    public void setBodyType(final List<String> bodyType) {
         this.bodyType = bodyType;
     }
 
+    /**
+     * @return smoking;
+     */
     public List<String> getSmoking() {
         return smoking;
     }
 
-    public void setSmoking(List<String> smoking) {
+    /**
+     * @param smoking set smoking;
+     */
+    public void setSmoking(final List<String> smoking) {
         this.smoking = smoking;
     }
 
+    /**
+     * @return drinking;
+     */
     public List<String> getDrinking() {
         return drinking;
     }
 
-    public void setDrinking(List<String> drinking) {
+    /**
+     * @param drinking set drinking;
+     */
+    public void setDrinking(final List<String> drinking) {
         this.drinking = drinking;
     }
 
+    /**
+     * @return height;
+     */
     public List<String> getHeight() {
         return height;
     }
 
-    public void setHeight(List<String> height) {
+    /**
+     * @param height set height;
+     */
+    public void setHeight(final List<String> height) {
         this.height = height;
     }
 

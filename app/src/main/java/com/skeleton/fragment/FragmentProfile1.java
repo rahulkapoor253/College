@@ -2,9 +2,7 @@ package com.skeleton.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,6 @@ import android.widget.Toast;
 import com.skeleton.R;
 import com.skeleton.activity.ProfileInfoActivty;
 import com.skeleton.model.profile1.DataConstant;
-import com.skeleton.model.Example;
 import com.skeleton.model.profile1.ItemsChooser;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ResponseResolver;
@@ -39,9 +36,14 @@ public class FragmentProfile1 extends BaseFragment {
     private Button btnNext;
     private ItemsChooser chooser;
 
-    @Nullable
+    /**
+     * @param inflater           inflater
+     * @param container          container
+     * @param savedInstanceState current instance is saved;
+     * @return return
+     */
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile_1, container, false);
 
         init(view);
@@ -51,21 +53,29 @@ public class FragmentProfile1 extends BaseFragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                ((ProfileInfoActivty)getActivity()).fragment2Calling();
+                ((ProfileInfoActivty) getActivity()).fragment2Calling();
 
             }
         });
 
         mListView = (ListView) view.findViewById(R.id.listview);
         RestClient.getApiInterface().getListData().enqueue(new ResponseResolver<DataConstant>(getContext(), true) {
+            /**
+             *
+             * @param data object of data contant model class;
+             */
             @Override
-            public void success(DataConstant data) {
+            public void success(final DataConstant data) {
                 chooser = data.getData();
 
             }
 
+            /**
+             *
+             * @param error the error
+             */
             @Override
-            public void failure(APIError error) {
+            public void failure(final APIError error) {
 
                 Toast.makeText(getContext(), "failure in fetching list of qualities!", Toast.LENGTH_SHORT).show();
             }
@@ -75,6 +85,9 @@ public class FragmentProfile1 extends BaseFragment {
         return view;
     }
 
+    /**
+     * @param v view
+     */
     @Override
     public void onClick(final View v) {
         super.onClick(v);
@@ -109,13 +122,12 @@ public class FragmentProfile1 extends BaseFragment {
 
     }
 
-    private void callDialog(int title, List<String> mItems, View view) {
 
-        FragmentManager fm = getChildFragmentManager();
-
-
-    }
-
+    /**
+     * @param title title
+     * @param list  list
+     * @param v     view
+     */
     private void setDialog(final int title, final List<String> list, final View v) {
 
         FragmentManager fm = getChildFragmentManager();
@@ -131,6 +143,9 @@ public class FragmentProfile1 extends BaseFragment {
 
     }
 
+    /**
+     * @param id id
+     */
     private void setViewColor(final int id) {
 
         switch (id) {
@@ -162,7 +177,9 @@ public class FragmentProfile1 extends BaseFragment {
 
     }
 
-
+    /**
+     * @param view view;
+     */
     private void init(final View view) {
 
         btnNext = (Button) view.findViewById(R.id.btn_next);
@@ -191,6 +208,5 @@ public class FragmentProfile1 extends BaseFragment {
         tvBodytype.setOnClickListener(this);
 
     }
-
 
 }

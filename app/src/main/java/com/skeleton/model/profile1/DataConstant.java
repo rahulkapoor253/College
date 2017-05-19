@@ -19,27 +19,45 @@ public class DataConstant {
     @Expose
     private ItemsChooser data;
 
+    /**
+     * @return return status code;
+     */
     public Integer getStatusCode() {
         return statusCode;
     }
 
-    public void setStatusCode(Integer statusCode) {
+    /**
+     * @param statusCode set status code;
+     */
+    public void setStatusCode(final Integer statusCode) {
         this.statusCode = statusCode;
     }
 
+    /**
+     * @return return message;
+     */
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    /**
+     * @param message set message;
+     */
+    public void setMessage(final String message) {
         this.message = message;
     }
 
+    /**
+     * @return return data;
+     */
     public ItemsChooser getData() {
         return data;
     }
 
-    public void setData(ItemsChooser data) {
+    /**
+     * @param data set data;
+     */
+    public void setData(final ItemsChooser data) {
         this.data = data;
     }
 

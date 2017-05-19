@@ -2,7 +2,6 @@ package com.skeleton.model.profile2;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.skeleton.model.Category;
 
 import java.util.List;
 
@@ -16,11 +15,17 @@ public class ProfileData {
     @Expose
     private List<ProfileCategory> categories = null;
 
+    /**
+     * @return categories;
+     */
     public List<ProfileCategory> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<ProfileCategory> categories) {
+    /**
+     * @param categories set Categories;
+     */
+    public void setCategories(final List<ProfileCategory> categories) {
         this.categories = categories;
     }
 

@@ -1,8 +1,8 @@
 package com.skeleton.retrofit;
 
 
-import com.skeleton.model.profile1.DataConstant;
 import com.skeleton.model.Example;
+import com.skeleton.model.profile1.DataConstant;
 import com.skeleton.model.profile2.ProfileExample;
 
 import java.util.HashMap;
@@ -92,10 +92,19 @@ public interface ApiInterface {
     Call<CommonParams> updateLocation(@Header(AUTHORIZATION) String authorization,
                                       @FieldMap HashMap<String, String> map);
 
+    /**
+     * @param map hash map ;
+     * @return return
+     */
     @Multipart
     @POST(SUB_URL_1)
     Call<Example> userSignUp(@PartMap HashMap<String, RequestBody> map);
 
+    /**
+     * @param authorization authorization
+     * @param map           map
+     * @return return
+     */
     @FormUrlEncoded
     @POST(SUB_URL_2)
     Call<Example> login(@Header(AUTHORIZATION) String authorization, @FieldMap HashMap<String, String> map);
@@ -108,14 +117,26 @@ public interface ApiInterface {
     @FormUrlEncoded
     @PUT(VERIFY_OTP)
     Call<Example> verifyOtp(@Header(AUTHORIZATION) String authorization,
-                                   @FieldMap HashMap<String, String> hashMap);
+                            @FieldMap HashMap<String, String> hashMap);
 
+    /**
+     * @param mAccessToken access token
+     * @return return
+     */
     @GET(VERIFY_ACCESS_TOKEN)
     Call<Example> userProfile(@Header(AUTHORIZATION) String mAccessToken);
 
+    /**
+     * @return return
+     */
     @GET(LIST_ITEMS)
     Call<DataConstant> getListData();
 
+    /**
+     * @param mAccessToken access Token
+     * @param request      request
+     * @return return ;
+     */
     @GET(IMAGE_TEXT_ACCESS)
     Call<ProfileExample> getImageText(@Header(AUTHORIZATION) String mAccessToken, @Query("requestType") String request);
 

@@ -1,54 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
-<RelativeLayout
+    <RelativeLayout
 
         android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+        android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_list_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-android:layout_marginTop="@dimen/margin_top_otp"
-        android:src="@mipmap/ic_launcher"
-        />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_list_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/margin_top_otp"
+            android:src="@mipmap/ic_launcher" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_blur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/margin_top_otp"
-        />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_blur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/margin_top_otp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/civ_mark_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-android:layout_marginTop="@dimen/margin_top_otp"            />
+            android:layout_marginTop="@dimen/margin_top_otp" />
 
 
-
-</RelativeLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_list_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="dummy text"
         android:layout_gravity="center"
+        android:text="dummy text"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_size"
-        />
+        android:textSize="@dimen/text_size" />
 
 </LinearLayout>
 

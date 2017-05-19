@@ -24,27 +24,37 @@ public class Data {
     @Expose
     private List<Category> categories = null;
 
-
+    /**
+     * @return category;
+     */
     public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<Category> categories) {
+    /**
+     * @param categories set categories
+     */
+    public void setCategories(final List<Category> categories) {
         this.categories = categories;
     }
 
-
+    /**
+     * @return OTP;
+     */
     public String getOTP() {
         return oTP;
     }
 
-    public void setOTP(String oTP) {
+    /**
+     * @param oTP set OTP;
+     */
+    public void setOTP(final String oTP) {
         this.oTP = oTP;
     }
 
 
     /**
-     * @return return
+     * @return return accessToken
      */
     public String getAccessToken() {
         return accessToken;
@@ -70,8 +80,6 @@ public class Data {
     public void setUserDetails(final UserDetails userDetails) {
         this.userDetails = userDetails;
     }
-
-
 
 
 }

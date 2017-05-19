@@ -8,4 +8,10 @@ package com.skeleton.constant;
 public interface PaperDbConstant {
     String PAPER_ACCESS_TOKEN = "paper_access_token";
     String PAPER_DEVICE_TOKEN = "paper_device_token";
+
+    /**
+     * dummy method;
+     */
+    public void dummyPaperdb();
+
 }

@@ -3,8 +3,6 @@ package com.skeleton.fragment;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +17,8 @@ import com.hbb20.CountryCodePicker;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
 import com.skeleton.activity.OTPActivity;
-import com.skeleton.activity.ProfileInfoActivty;
 import com.skeleton.database.CommonData;
 import com.skeleton.model.Example;
-import com.skeleton.model.UserDetails;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.MultipartParams;
 import com.skeleton.retrofit.ResponseResolver;
@@ -34,20 +30,11 @@ import com.skeleton.util.dialog.DatePickerFragment;
 import com.skeleton.util.imagepicker.ImageChooser;
 
 import java.io.File;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.RequestBody;
-import retrofit2.http.Body;
-
-import static com.skeleton.constant.AppConstant.KEY_MODE;
-import static com.skeleton.constant.AppConstant.REQ_OTP;
-import static com.skeleton.constant.AppConstant.REQ_SIGN_UP;
-import static com.skeleton.constant.AppConstant.SHARED_OBJ;
 
 
 /**
@@ -74,33 +61,36 @@ public class SignupFragment extends BaseFragment {
     private String mFname, mEmail, mDOB, mPhone, mPass, mCountryCode;
     private String mDeviceToken = "DEVICE_OK", mUserAppVersion = "VERSION", mLang = "EN", mDeviceType = "ANDROID";
 
-
-    @Nullable
+    /**
+     * @param inflater           inflater
+     * @param container          container
+     * @param savedInstanceState current insatance is saved;
+     * @return return
+     */
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signup, container, false);
 
-    init(view);
+        init(view);
 
 
         mUserImage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 chooseImage();
             }
         });
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
 
-                if(validate()) {
+                if (validate()) {
 
                     setData();
 
                     uploadData();
 
-                }
-                else {
+                } else {
                     Toast.makeText(getContext(), "Enter Details Correctly!", Toast.LENGTH_SHORT).show();
                 }
 
@@ -109,11 +99,12 @@ public class SignupFragment extends BaseFragment {
         });
 
 
-
         return view;
     }
 
-
+    /**
+     * @param v view
+     */
     @Override
     public void onClick(final View v) {
         super.onClick(v);
@@ -123,7 +114,7 @@ public class SignupFragment extends BaseFragment {
             case R.id.met_dob:
                 DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    public void onDateSet(final DatePicker view, final int year, final int month, final int dayOfMonth) {
 
                         String mMonth, mDateOfMonth;
                         if (month > 9) {
@@ -144,12 +135,18 @@ public class SignupFragment extends BaseFragment {
 
                     }
                 }).show(getChildFragmentManager(), "datePicker");
+                break;
 
+            default:
+                break;
 
 
         }
     }
 
+    /**
+     * upload Data;
+     */
     private void uploadData() {
 
         HashMap<String, RequestBody> params = new MultipartParams.Builder()
@@ -169,10 +166,13 @@ public class SignupFragment extends BaseFragment {
                 .build().getMap();
 
 
-
-        RestClient.getApiInterface().userSignUp(params).enqueue(new ResponseResolver<Example>(getContext() ,true) {
+        RestClient.getApiInterface().userSignUp(params).enqueue(new ResponseResolver<Example>(getContext(), true) {
+            /**
+             *
+             * @param example example
+             */
             @Override
-            public void success(Example example) {
+            public void success(final Example example) {
                 Toast.makeText(getContext(), "Success!", Toast.LENGTH_SHORT).show();
                 CommonData.saveAccessToken(example.getData().getAccessToken());
                 Intent mIntent = new Intent(getContext(), OTPActivity.class);
@@ -183,23 +183,28 @@ public class SignupFragment extends BaseFragment {
 
             }
 
+            /**
+             *
+             * @param error the error
+             */
             @Override
-            public void failure(APIError error) {
+            public void failure(final APIError error) {
                 Toast.makeText(getContext(), "Upload Failure!", Toast.LENGTH_SHORT).show();
 
             }
         });
 
 
-
     }
 
-
+    /**
+     * @return validate;
+     */
     private boolean validate() {
 
-    mGender = mRgGender.getCheckedRadioButtonId();
+        mGender = mRgGender.getCheckedRadioButtonId();
         int checkVal = checkGender();
-    mGender = checkVal;
+        mGender = checkVal;
 
         if (mImageFile == null) {
             Toast.makeText(getContext(), "Choose a profile picture!", Toast.LENGTH_SHORT).show();
@@ -227,13 +232,14 @@ public class SignupFragment extends BaseFragment {
         return true;
 
 
-
     }
 
-
+    /**
+     * @return checkGender;
+     */
     private int checkGender() {
 
-        if(rbMale.isChecked()) {
+        if (rbMale.isChecked()) {
             return 0;
         }
 
@@ -245,12 +251,18 @@ public class SignupFragment extends BaseFragment {
 
     }
 
+    /**
+     * chooseImage;
+     */
     private void chooseImage() {
         imageChooser = new ImageChooser.Builder(this).setCropEnabled(false).build();
         imageChooser.selectImage(new ImageChooser.OnImageSelectListener() {
-
+            /**
+             *
+             * @param list the list
+             */
             @Override
-            public void loadImage(List<ChosenImage> list) {
+            public void loadImage(final List<ChosenImage> list) {
                 mImageFile = new File(list.get(0).getOriginalPath());
                 Glide.with(SignupFragment.this)
                         .load(list.get(0).getQueryUri())
@@ -258,8 +270,12 @@ public class SignupFragment extends BaseFragment {
 
             }
 
+            /**
+             *
+             * @param mCroppedImage the m cropped image
+             */
             @Override
-            public void croppedImage(File mCroppedImage) {
+            public void croppedImage(final File mCroppedImage) {
 
             }
         });
@@ -289,7 +305,9 @@ public class SignupFragment extends BaseFragment {
 
     }
 
-
+    /**
+     * setData;
+     */
     private void setData() {
 
         mFname = metFname.getText().toString();
@@ -297,14 +315,16 @@ public class SignupFragment extends BaseFragment {
         mDOB = metDOB.getText().toString();
         mPhone = metPhone.getText().toString();
         mPass = metPass.getText().toString();
-        mCountryCode = "+" +  countryCodePicker.getSelectedCountryCode().toString();
+        mCountryCode = "+" + countryCodePicker.getSelectedCountryCode().toString();
         Log.i("ccp", mCountryCode);
-
 
 
     }
 
-    private void init(View view) {
+    /**
+     * @param view view
+     */
+    private void init(final View view) {
 
         metFname = (MaterialEditText) view.findViewById(R.id.met_fname);
         metEmail = (MaterialEditText) view.findViewById(R.id.met_email);

@@ -28,15 +28,15 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabGravity="fill"
-                android:layout_gravity="bottom"/>
+                android:layout_gravity="bottom"
+                app:tabGravity="fill" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                app:layout_collapseMode="pin"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:layout_scrollFlags="scroll|enterAlways"/>
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways" />
 
 
         </android.support.design.widget.CollapsingToolbarLayout>

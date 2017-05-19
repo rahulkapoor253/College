@@ -29,6 +29,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     }
 
+    /**
+     *
+     * @param position position
+     * @return return
+     */
     @Override
     public Fragment getItem(final int position) {
 
@@ -46,6 +51,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     }
 
+    /**
+     *
+     * @return return count of frags;
+     */
     @Override
     public int getCount() {
         if (fragments == null) {
@@ -55,8 +64,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         }
     }
 
+    /**
+     *
+     * @param position position
+     * @return return pos;
+     */
     @Override
-    public CharSequence getPageTitle(int position) {
+    public CharSequence getPageTitle(final int position) {
         return mTabHeader[position];
     }
 }

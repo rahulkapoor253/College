@@ -31,59 +31,101 @@ public class ProfileCategory {
     @Expose
     private String name;
 
+    /**
+     * @return ID;
+     */
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    /**
+     * @param id set ID;
+     */
+    public void setId(final String id) {
         this.id = id;
     }
 
+    /**
+     * @return categoryType;
+     */
     public String getCategoryType() {
         return categoryType;
     }
 
-    public void setCategoryType(String categoryType) {
+    /**
+     * @param categoryType set categoryType;
+     */
+    public void setCategoryType(final String categoryType) {
         this.categoryType = categoryType;
     }
 
+    /**
+     * @return updateAt;
+     */
     public String getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    /**
+     * @param updatedAt setupdateAt;
+     */
+    public void setUpdatedAt(final String updatedAt) {
         this.updatedAt = updatedAt;
     }
 
+    /**
+     * @return created At;
+     */
     public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    /**
+     * @param createdAt created At;
+     */
+    public void setCreatedAt(final String createdAt) {
         this.createdAt = createdAt;
     }
 
+    /**
+     * @return isdeleted;
+     */
     public Boolean getIsDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(Boolean isDeleted) {
+    /**
+     * @param isDeleted isdeleted;
+     */
+    public void setIsDeleted(final Boolean isDeleted) {
         this.isDeleted = isDeleted;
     }
 
+    /**
+     * @return picurl
+     */
     public PicURL getPicURL() {
         return picURL;
     }
 
-    public void setPicURL(PicURL picURL) {
+    /**
+     * @param picURL set pickURL;
+     */
+    public void setPicURL(final PicURL picURL) {
         this.picURL = picURL;
     }
 
+    /**
+     * @return getname;
+     */
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    /**
+     * @param name set name
+     */
+    public void setName(final String name) {
         this.name = name;
     }
 

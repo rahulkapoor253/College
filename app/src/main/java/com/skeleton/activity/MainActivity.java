@@ -2,19 +2,16 @@ package com.skeleton.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.skeleton.R;
 import com.skeleton.database.CommonData;
 import com.skeleton.fragment.SigninFragment;
 import com.skeleton.fragment.SignupFragment;
-import com.skeleton.fragment.TestLocationFragment;
 import com.skeleton.model.Example;
 import com.skeleton.model.UserDetails;
 import com.skeleton.retrofit.APIError;
@@ -39,6 +36,9 @@ public class MainActivity extends BaseActivity {
     private String mAccessToken;
     private Example mExample;
 
+    /**
+     * @param savedInstanceState current instance is saved;
+     */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +52,13 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    /**
+     * @param requestCode req code;
+     * @param resultCode  res code;
+     * @param data        data;
+     */
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
 
@@ -72,18 +77,21 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    /**
+     * getToken;
+     */
     private void getToken() {
         mAccessToken = CommonData.getAccessToken();
         if (mAccessToken != null) {
             RestClient.getApiInterface().userProfile("bearer " + mAccessToken).enqueue(new ResponseResolver<Example>(MainActivity.this, true) {
                 @Override
-                public void success(Example example) {
+                public void success(final Example example) {
                     mExample = example;
 
                 }
 
                 @Override
-                public void failure(APIError error) {
+                public void failure(final APIError error) {
                     Toast.makeText(MainActivity.this, "failure in setting object!", Toast.LENGTH_SHORT).show();
 
                 }
@@ -94,7 +102,9 @@ public class MainActivity extends BaseActivity {
 
     }
 
-
+    /**
+     * init();
+     */
     private void init() {
         getToken();
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
@@ -102,7 +112,7 @@ public class MainActivity extends BaseActivity {
         fragments.add(new SignupFragment());
         fragments.add(new SigninFragment());
 
-mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
     }
 

@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,12 +28,14 @@ import com.skeleton.util.dialog.CustomAlertDialog;
  */
 public class SplashActivity extends BaseActivity implements FCMTokenInterface {
     private static final String TAG = SplashActivity.class.getName();
-    private Dialog mDialog;
-    private SharedPreferences sh_Pref;
-    private static int PRIVATE_MODE = 0;
     private static final String IS_LOGIN = "IsLoggedIn";
+    private static int privateMode = 0;
+    private Dialog mDialog;
     private Intent mIntent;
 
+    /**
+     * @param savedInstanceState current instance is saved;
+     */
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,7 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
 
 
     /**
-     *
+     * initialisations;
      */
     private synchronized void init() {
         if (!Util.isNetworkAvailable(SplashActivity.this)) {
@@ -74,6 +75,11 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
         MyFirebaseInstanceIdService.setCallback(this);
     }
 
+    /**
+     * @param requestCode req code;
+     * @param resultCode  res code;
+     * @param data        data;
+     */
     @Override
     @TargetApi(Build.VERSION_CODES.M)
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
@@ -86,8 +92,7 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
         } else if (requestCode == REQ_CODE_PLAY_SERVICES_RESOLUTION
                 && resultCode == Activity.RESULT_OK) {
             init();
-        }
-        else if (requestCode == REQ_SIGN_UP) {
+        } else if (requestCode == REQ_SIGN_UP) {
             if (resultCode == Activity.RESULT_OK) {
                 finish();
             }
@@ -125,64 +130,66 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
         return true;
     }
 
-
+    /**
+     * @param token the token
+     */
     @Override
     public void onTokenReceived(final String token) {
         Log.e(TAG, token);
         //checkPreferences();
 
-       startActivityForResult(new Intent(this, MainActivity.class), REQ_SIGN_UP);
-
-    }
-
-    private void goToActivity(final String accessToken) {
-
-        if(accessToken == null) {
-            mIntent = new Intent(SplashActivity.this, MainActivity.class);
-            startActivity(mIntent);
-            finish();
-        }
-
-        else {
-
-            RestClient.getApiInterface().userProfile("bearer " + CommonData.getAccessToken()).enqueue(new ResponseResolver<Example>(SplashActivity.this, true) {
-                @Override
-                public void success(Example example) {
-
-                    if(example.getData().getUserDetails().getStep1CompleteOrSkip()
-                            && example.getData().getUserDetails().getStep2CompleteOrSkip()) {
-                        startActivity(new Intent(SplashActivity.this, HomeActivty.class));
-                    }
-                    else {
-                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                    }
-
-                }
-
-                @Override
-                public void failure(APIError error) {
-
-                }
-            });
-
-        }
-
+        startActivityForResult(new Intent(this, MainActivity.class), REQ_SIGN_UP);
 
     }
 
     /**
-     * to check if the user has already logged in or not;
+     * @param accessToken access token
      */
-    public void checkPreferences() {
-        sh_Pref = getSharedPreferences("Login", PRIVATE_MODE);
-        boolean isCheck = sh_Pref.getBoolean(IS_LOGIN, false);
-        if (isCheck) {
-            //Intent intent = new Intent(SplashActivity.this, );
-            //  startActivity(intent);
+    private void goToActivity(final String accessToken) {
+
+        if (accessToken == null) {
+            mIntent = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(mIntent);
+            finish();
+        } else {
+
+            RestClient.getApiInterface().userProfile("bearer " + CommonData.getAccessToken()).
+                    enqueue(new ResponseResolver<Example>(SplashActivity.this, true) {
+                        /**
+                         *
+                         * @param example object of the main model class;
+                         */
+                        @Override
+                        public void success(final Example example) {
+
+                            if (example.getData().getUserDetails().getStep1CompleteOrSkip()
+                                    && example.getData().getUserDetails().getStep2CompleteOrSkip()) {
+                                startActivity(new Intent(SplashActivity.this, HomeActivty.class));
+                            } else {
+                                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                            }
+
+                        }
+
+                        /**
+                         *
+                         * @param error the error
+                         */
+                        @Override
+                        public void failure(final APIError error) {
+
+                        }
+                    });
+
         }
+
 
     }
 
+
+    /**
+     * onFailure;
+     */
     @Override
     public void onFailure() {
         if (isFinishing()) {
@@ -216,5 +223,6 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
             return true;
         }
     }
+
 
 }

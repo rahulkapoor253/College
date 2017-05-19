@@ -2,8 +2,6 @@ package com.skeleton.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +17,8 @@ import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.CommonParams;
 import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
-import com.skeleton.util.StringUtil;
 import com.skeleton.util.ValidateEditText;
 import com.skeleton.util.customview.MaterialEditText;
-
-import java.util.HashMap;
-
-import static com.skeleton.constant.AppConstant.KEY_MODE;
-import static com.skeleton.constant.AppConstant.SHARED_OBJ;
 
 /**
  * Created by rahulkapoor on 11/05/17.
@@ -42,21 +34,25 @@ public class SigninFragment extends BaseFragment {
     private String deviceType = "ANDROID", lang = "EN", deviceToken = "DEVICE_OK", appVersion = "VERSION";
     private Example mExample;
 
-
-    @Nullable
+    /**
+     * @param inflater           inflater
+     * @param container          container
+     * @param savedInstanceState current insatnce is saved;
+     * @return return
+     */
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_signin, container, false);
 
         init(view);
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
 
-                if(validate()) {
+                if (validate()) {
 
-                setData();
+                    setData();
 
                     CommonParams params = new CommonParams.Builder()
                             .add("email", mUserEmail)
@@ -69,8 +65,12 @@ public class SigninFragment extends BaseFragment {
                             .build();
 
                     RestClient.getApiInterface().login(null, params.getMap()).enqueue(new ResponseResolver<Example>(getContext(), true) {
+                        /**
+                         *
+                         * @param example object of main Model class;
+                         */
                         @Override
-                        public void success(Example example) {
+                        public void success(final Example example) {
 
                             Toast.makeText(getContext(), "success!", Toast.LENGTH_SHORT).show();
                             CommonData.saveAccessToken(example.getData().getAccessToken());
@@ -82,8 +82,12 @@ public class SigninFragment extends BaseFragment {
 
                         }
 
+                        /**
+                         *
+                         * @param error the error
+                         */
                         @Override
-                        public void failure(APIError error) {
+                        public void failure(final APIError error) {
                             Toast.makeText(getContext(), "signin failed! try again", Toast.LENGTH_SHORT).show();
 
                         }
@@ -98,6 +102,9 @@ public class SigninFragment extends BaseFragment {
         return view;
     }
 
+    /**
+     * set Data;
+     */
     private void setData() {
         mUserEmail = metEmail.getText().toString();
         mUserPass = metPass.getText().toString();
@@ -105,6 +112,9 @@ public class SigninFragment extends BaseFragment {
 
     }
 
+    /**
+     * @return validate;
+     */
     private boolean validate() {
 
         if (!ValidateEditText.checkEmail(metEmail)) {
@@ -119,8 +129,13 @@ public class SigninFragment extends BaseFragment {
 
     }
 
+    /**
+     * @param requestCode req code
+     * @param resultCode  res code
+     * @param data        data;
+     */
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Intent i = new Intent(getContext(), ProfileInfoActivty.class);
         i.putExtra(SHARED_OBJ, mExample.getData().getUserDetails());
@@ -128,7 +143,10 @@ public class SigninFragment extends BaseFragment {
 
     }
 
-    private void init(View view) {
+    /**
+     * @param view view
+     */
+    private void init(final View view) {
         metEmail = (MaterialEditText) view.findViewById(R.id.met_signin_email);
         metPass = (MaterialEditText) view.findViewById(R.id.met_signin_pass);
 
@@ -137,4 +155,5 @@ public class SigninFragment extends BaseFragment {
 
 
     }
+
 }

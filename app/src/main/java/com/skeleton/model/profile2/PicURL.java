@@ -16,19 +16,31 @@ public class PicURL {
     @Expose
     private String original;
 
+    /**
+     * @return thumbnail;
+     */
     public String getThumbnail() {
         return thumbnail;
     }
 
-    public void setThumbnail(String thumbnail) {
+    /**
+     * @param thumbnail set thumbnail;
+     */
+    public void setThumbnail(final String thumbnail) {
         this.thumbnail = thumbnail;
     }
 
+    /**
+     * @return original;
+     */
     public String getOriginal() {
         return original;
     }
 
-    public void setOriginal(String original) {
+    /**
+     * @param original set original;
+     */
+    public void setOriginal(final String original) {
         this.original = original;
     }
 

@@ -1,7 +1,6 @@
 package com.skeleton.util.dialog;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +35,12 @@ public class CustomDialog extends DialogFragment implements AdapterView.OnItemCl
 
     }
 
+    /**
+     * @param title    title
+     * @param list     list
+     * @param callback callback
+     * @return return
+     */
     public static CustomDialog newInstance(final String title, final List<String> list, final ItemClicked callback) {
         final CustomDialog frag = new CustomDialog();
         frag.setListener(callback);
@@ -46,10 +51,13 @@ public class CustomDialog extends DialogFragment implements AdapterView.OnItemCl
         return frag;
     }
 
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    /**
+     * @param inflater           inflater
+     * @param container          container
+     * @param savedInstanceState current insatace is saved;
+     * @return return;
+     */
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.list_view, container, false);
 
         mItems = getArguments().getStringArrayList("list");
@@ -60,6 +68,9 @@ public class CustomDialog extends DialogFragment implements AdapterView.OnItemCl
         return view;
     }
 
+    /**
+     * @param savedInstanceState current instance is saved;
+     */
     @Override
     public void onActivityCreated(final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -69,8 +80,14 @@ public class CustomDialog extends DialogFragment implements AdapterView.OnItemCl
         listView.setOnItemClickListener(this);
     }
 
+    /**
+     * @param parent   parent
+     * @param view     view
+     * @param position position
+     * @param id       ID;
+     */
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id) {
         dismiss();
         setValues(mItems.get(position), parent.getId());
 
@@ -94,6 +111,9 @@ public class CustomDialog extends DialogFragment implements AdapterView.OnItemCl
         this.mCallback = callback;
     }
 
+    /**
+     * item clicked;
+     */
     public interface ItemClicked {
         /**
          * @param text   value to be sent to other fragment

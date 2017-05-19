@@ -13,7 +13,9 @@ import com.skeleton.constant.AppConstant;
 
 public abstract class BaseFragment extends Fragment implements AppConstant, ApiKeyConstant, View.OnClickListener {
 
-
+    /**
+     * @param v view
+     */
     @Override
     public void onClick(final View v) {
 

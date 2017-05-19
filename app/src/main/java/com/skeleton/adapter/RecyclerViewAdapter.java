@@ -22,13 +22,19 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private static int COUNT = 0;
+    private static int count = 0;
+    private static int myCount = 0;
     private Context mContext;
     private List<ProfileCategory> mCategory;
     private FragmentProfile2 frag;
     private ArrayList<View> arrayList = new ArrayList<>();
 
-    public RecyclerViewAdapter(Context context, List<ProfileCategory> categories, FragmentProfile2 fragmentProfile2) {
+    /**
+     * @param context          context
+     * @param categories       categories;
+     * @param fragmentProfile2 frag profile;
+     */
+    public RecyclerViewAdapter(final Context context, final List<ProfileCategory> categories, final FragmentProfile2 fragmentProfile2) {
 
         this.mContext = context;
         this.mCategory = categories;
@@ -36,33 +42,47 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     }
 
+    /**
+     * @param parent   parent
+     * @param viewType viewType
+     * @return return view to viewHolder;
+     */
     @Override
-    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_view, parent, false);
-
+        /*
         arrayList.add(frag.mView1);
         arrayList.add(frag.mView2);
         arrayList.add(frag.mView3);
         arrayList.add(frag.mView4);
         arrayList.add(frag.mView5);
-
+*/
         return new ViewHolder(view);
     }
 
+    /**
+     * @param holder   holder
+     * @param position pos
+     */
     @Override
-    public void onBindViewHolder(RecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerViewAdapter.ViewHolder holder, final int position) {
 
         holder.tvLabel.setText(mCategory.get(position).getName());
         //Picasso.with(mContext).load(mCategory.get(position).getPicURL().getThumbnail()).into(holder.civImage);
 
     }
 
+    /**
+     * @return return;
+     */
     @Override
     public int getItemCount() {
         return mCategory.size();
     }
 
-
+    /**
+     * view holder inner class;
+     */
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView tvLabel;
@@ -70,7 +90,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private CircleImageView civBlur;
         private CircleImageView civMark;
 
-        public ViewHolder(View itemView) {
+        /**
+         * @param itemView itemView;
+         */
+        public ViewHolder(final View itemView) {
             super(itemView);
 
             itemView.setOnClickListener(this);
@@ -82,29 +105,35 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         }
 
+        /**
+         * @param v view;
+         */
         @Override
-        public void onClick(View v) {
+        public void onClick(final View v) {
             int pos = getAdapterPosition();
 
-            if (COUNT < 5) {
+            if (count < 5) {
                 if (civMark.getDrawable() == null) {
-                    arrayList.get(COUNT).setBackgroundResource(R.color.view_color_check);
+                    arrayList.get(myCount).setBackgroundResource(R.color.view_color_check);
+                    myCount++;
                     civMark.setImageResource(R.drawable.check_mark);
                     civBlur.setImageResource(R.color.translucent);
-                    COUNT++;
+                    count++;
                 } else if (civMark.getDrawable() != null) {
-                    arrayList.get(COUNT).setBackgroundResource(R.color.view_color_check_remove);
+                    arrayList.get(myCount).setBackgroundResource(R.color.view_color_check_remove);
+                    arrayList.remove(myCount);
                     civMark.setImageDrawable(null);
                     civBlur.setImageDrawable(null);
-                    COUNT--;
+                    count--;
                 }
 
             } else {
                 if (civMark.getDrawable() != null) {
-                    arrayList.get(COUNT).setBackgroundResource(R.color.view_color_check_remove);
+                    arrayList.get(count).setBackgroundResource(R.color.view_color_check_remove);
+                    arrayList.remove(myCount);
                     civMark.setImageDrawable(null);
                     civBlur.setImageDrawable(null);
-                    COUNT--;
+                    count--;
                 }
 
 

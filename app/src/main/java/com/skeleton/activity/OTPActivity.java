@@ -7,11 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.skeleton.R;
 import com.skeleton.database.CommonData;
-import com.skeleton.model.Data;
 import com.skeleton.model.Example;
 import com.skeleton.model.UserDetails;
 import com.skeleton.retrofit.APIError;
@@ -38,7 +36,9 @@ public class OTPActivity extends BaseActivity {
     private Button btnSkip;
     private Intent i;
 
-
+    /**
+     * @param savedInstanceState savedInstance is saved;
+     */
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.screen_otp);
@@ -57,8 +57,11 @@ public class OTPActivity extends BaseActivity {
         tvUserPhone.setText(userDetails.getPhoneNo());
 
 
-
         btnVerify.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param v view;
+             */
             @Override
             public void onClick(final View v) {
                 mOTP = etotp.getText().toString();
@@ -71,12 +74,20 @@ public class OTPActivity extends BaseActivity {
                 RestClient.getApiInterface()
                         .verifyOtp("bearer " + CommonData.getAccessToken(), params.getMap())
                         .enqueue(new ResponseResolver<Example>(OTPActivity.this, true) {
+                            /**
+                             *
+                             * @param example example;
+                             */
                             @Override
                             public void success(final Example example) {
                                 setResult(RESULT_OK);
                                 finish();
                             }
 
+                            /**
+                             *
+                             * @param error the error
+                             */
                             @Override
                             public void failure(final APIError error) {
 
@@ -108,5 +119,6 @@ public class OTPActivity extends BaseActivity {
 
 
     }
+
 
 }

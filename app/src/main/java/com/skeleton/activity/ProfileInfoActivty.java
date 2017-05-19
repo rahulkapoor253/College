@@ -1,10 +1,9 @@
 package com.skeleton.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +15,9 @@ import com.skeleton.fragment.FragmentProfile1;
 import com.skeleton.fragment.FragmentProfile2;
 import com.skeleton.model.UserDetails;
 
+/**
+ * profile info activity that call both the profile fragments;
+ */
 public class ProfileInfoActivty extends BaseActivity {
 
     private Toolbar mToolbar;
@@ -25,8 +27,11 @@ public class ProfileInfoActivty extends BaseActivity {
     private Intent intent;
     private UserDetails details;
 
+    /**
+     * @param savedInstanceState current instance is saved;
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_info_activty);
 
@@ -35,8 +40,12 @@ public class ProfileInfoActivty extends BaseActivity {
         fragmentCalling();
 
         btnSkip.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param v view
+             */
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
 
             }
         });
@@ -44,6 +53,9 @@ public class ProfileInfoActivty extends BaseActivity {
 
     }
 
+    /**
+     * to call the second profile frag;
+     */
     public void fragment2Calling() {
 
         FragmentManager fm = getSupportFragmentManager();
@@ -53,6 +65,9 @@ public class ProfileInfoActivty extends BaseActivity {
 
     }
 
+    /**
+     * first frag calling.
+     */
     private void fragmentCalling() {
 
         //getIntent().putExtra(SHARED_OBJ, details);
@@ -63,16 +78,18 @@ public class ProfileInfoActivty extends BaseActivity {
 
     }
 
+    /**
+     * initialisation;
+     */
     public void init() {
 
         mToolbar = (Toolbar) findViewById(R.id.custom_toolbar);
         mTitle = (TextView) findViewById(R.id.toolbar_title);
         mLinearLayout = (LinearLayout) findViewById(R.id.ll_profile_info);
         btnSkip = (Button) findViewById(R.id.btn_skip);
-       // details = intent.getParcelableExtra(SHARED_OBJ);
+        // details = intent.getParcelableExtra(SHARED_OBJ);
 
     }
-
 
 
 }
