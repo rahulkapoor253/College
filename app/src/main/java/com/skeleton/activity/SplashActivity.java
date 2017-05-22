@@ -149,7 +149,7 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
 
         if (accessToken == null) {
             mIntent = new Intent(SplashActivity.this, MainActivity.class);
-            startActivity(mIntent);
+            startActivityForResult(mIntent, REQ_CODE_MAIN);
             finish();
         } else {
 

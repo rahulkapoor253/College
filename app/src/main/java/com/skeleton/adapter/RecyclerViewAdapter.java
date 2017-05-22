@@ -50,13 +50,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public RecyclerViewAdapter.ViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item_view, parent, false);
-        /*
-        arrayList.add(frag.mView1);
-        arrayList.add(frag.mView2);
-        arrayList.add(frag.mView3);
-        arrayList.add(frag.mView4);
-        arrayList.add(frag.mView5);
-*/
+
+
+        arrayList = frag.getList();
+
         return new ViewHolder(view);
     }
 

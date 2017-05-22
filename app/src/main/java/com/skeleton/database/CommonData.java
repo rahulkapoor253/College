@@ -86,4 +86,8 @@ public final class CommonData implements PaperDbConstant {
 
     }
 
+    @Override
+    public void dummyPaperdb() {
+
+    }
 }

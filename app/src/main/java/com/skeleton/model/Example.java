@@ -12,6 +12,18 @@ import com.google.gson.annotations.SerializedName;
 
 public class Example implements Parcelable {
 
+    public static final Creator<Example> CREATOR = new Creator<Example>() {
+        @Override
+        public Example createFromParcel(final Parcel in) {
+            return new Example(in);
+        }
+
+        @Override
+        public Example[] newArray(final int size) {
+            return new Example[size];
+        }
+    };
+
     @SerializedName("statusCode")
     @Expose
     private Integer statusCode;
@@ -23,16 +35,14 @@ public class Example implements Parcelable {
     private Data data;
 
     /**
-     *
-     * @param in in
+     * @param in parcel in
      */
     protected Example(final Parcel in) {
         message = in.readString();
     }
 
     /**
-     *
-     * @param dest dest
+     * @param dest  dest
      * @param flags flags
      */
     @Override
@@ -41,7 +51,6 @@ public class Example implements Parcelable {
     }
 
     /**
-     *
      * @return return
      */
     @Override
@@ -49,41 +58,6 @@ public class Example implements Parcelable {
         return 0;
     }
 
-    /**
-     * creator;
-     */
-    public static final Creator<Example> CREATOR = new Creator<Example>() {
-        /**
-         *
-         * @param in in
-         * @return return
-         */
-        @Override
-        public Example createFromParcel(Parcel in) {
-            return new Example(in);
-        }
-
-        /**
-         *
-         * @param size size
-         * @return return
-         */
-        @Override
-        public Example[] newArray(int size) {
-            return new Example[size];
-        }
-    };
-
-    /**
-         *
-         * @param size size
-         * @return return
-         */
-        @Override
-        public Example[] newArray(final int size) {
-            return new Example[size];
-        }
-    };
 
     /**
      * @return return
@@ -127,20 +101,8 @@ public class Example implements Parcelable {
         this.data = data;
     }
 
-    /**
-     * @return return describeContents;
-     */
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    /**
-     * @param dest  dest
-     * @param flags flags;
-     */
-    @Override
-    public void writeToParcel(final Parcel dest, final int flags) {
-        dest.writeString(message);
-    }
 }
+
+
+

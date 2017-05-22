@@ -22,6 +22,8 @@ import com.skeleton.retrofit.ResponseResolver;
 import com.skeleton.retrofit.RestClient;
 import com.skeleton.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * Created by rahulkapoor on 13/05/17.
  */
@@ -87,6 +89,22 @@ public class FragmentProfile2 extends Fragment {
 
 
         return view;
+    }
+
+    /**
+     *
+     * @return return array list which holds views;
+     */
+    public ArrayList<View> getList() {
+        ArrayList<View> arrayListItems = new ArrayList<>();
+
+        arrayListItems.add(mView1);
+        arrayListItems.add(mView2);
+        arrayListItems.add(mView3);
+        arrayListItems.add(mView4);
+        arrayListItems.add(mView5);
+
+        return arrayListItems;
     }
 
     /**

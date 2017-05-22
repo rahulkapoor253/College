@@ -14,6 +14,21 @@ import java.util.List;
 
 public class UserDetails implements Parcelable {
 
+
+    public static final Creator<UserDetails> CREATOR = new Creator<UserDetails>() {
+
+        @Override
+        public UserDetails createFromParcel(final Parcel in) {
+            return new UserDetails(in);
+        }
+
+        @Override
+        public UserDetails[] newArray(final int size) {
+            return new UserDetails[size];
+        }
+    };
+
+
     @SerializedName("_id")
     @Expose
     private String id;
@@ -76,9 +91,9 @@ public class UserDetails implements Parcelable {
     @Expose
     private CurrentLocation currentLocation;
 
+
     /**
-     *
-     * @param in in
+     * @param in parcel in
      */
     protected UserDetails(final Parcel in) {
         id = in.readString();
@@ -95,29 +110,31 @@ public class UserDetails implements Parcelable {
     }
 
     /**
-     * creator
+     * @param dest  det
+     * @param flags flags
      */
-    public static final Creator<UserDetails> CREATOR = new Creator<UserDetails>() {
-        /**
-         *
-         * @param in in
-         * @return return
-         */
-        @Override
-        public UserDetails createFromParcel(final Parcel in) {
-            return new UserDetails(in);
-        }
+    @Override
+    public void writeToParcel(final Parcel dest, final int flags) {
+        dest.writeString(id);
+        dest.writeString(createdAt);
+        dest.writeString(updatedAt);
+        dest.writeString(dob);
+        dest.writeString(countryCode);
+        dest.writeString(phoneNo);
+        dest.writeString(email);
+        dest.writeString(newNumber);
+        dest.writeString(aboutMe);
+        dest.writeByte((byte) (phoneVerified ? 1 : 0));
+        dest.writeByte((byte) (emailVerified ? 1 : 0));
+    }
 
-        /**
-         *
-         * @param size size
-         * @return return
-         */
-        @Override
-        public UserDetails[] newArray(final int size) {
-            return new UserDetails[size];
-        }
-    };
+    /**
+     * @return return
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
     /**
      * @return return
@@ -399,30 +416,5 @@ public class UserDetails implements Parcelable {
         this.currentLocation = currentLocation;
     }
 
-    /**
-     * @return describe contents;
-     */
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    /**
-     * @param dest  dest;
-     * @param flags flags;
-     */
-    @Override
-    public void writeToParcel(final Parcel dest, final int flags) {
-        dest.writeString(id);
-        dest.writeString(createdAt);
-        dest.writeString(updatedAt);
-        dest.writeString(dob);
-        dest.writeString(countryCode);
-        dest.writeString(phoneNo);
-        dest.writeString(email);
-        dest.writeString(newNumber);
-        dest.writeString(aboutMe);
-        dest.writeByte((byte) (phoneVerified ? 1 : 0));
-        dest.writeByte((byte) (emailVerified ? 1 : 0));
-    }
 }

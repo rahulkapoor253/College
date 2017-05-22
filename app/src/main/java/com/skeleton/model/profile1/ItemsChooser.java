@@ -86,7 +86,7 @@ public class ItemsChooser {
     }
 
     /**
-     * @param religion
+     * @param religion religion
      */
     public void setReligion(final List<String> religion) {
         this.religion = religion;

@@ -46,10 +46,10 @@ public class Data {
     }
 
     /**
-     * @param oTP set OTP;
+     * @param otp set OTP;
      */
-    public void setOTP(final String oTP) {
-        this.oTP = oTP;
+    public void setOTP(final String otp) {
+        this.oTP = otp;
     }
 
 
