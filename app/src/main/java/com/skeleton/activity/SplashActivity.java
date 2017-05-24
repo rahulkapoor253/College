@@ -164,7 +164,7 @@ public class SplashActivity extends BaseActivity implements FCMTokenInterface {
 
                             if (example.getData().getUserDetails().getStep1CompleteOrSkip()
                                     && example.getData().getUserDetails().getStep2CompleteOrSkip()) {
-                                startActivity(new Intent(SplashActivity.this, HomeActivty.class));
+                                startActivity(new Intent(SplashActivity.this, HomeActivity.class));
                             } else {
                                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
                             }

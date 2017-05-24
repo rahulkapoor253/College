@@ -173,13 +173,13 @@ public class SignupFragment extends BaseFragment {
              */
             @Override
             public void success(final Example example) {
+
                 Toast.makeText(getContext(), "Success!", Toast.LENGTH_SHORT).show();
                 CommonData.saveAccessToken(example.getData().getAccessToken());
                 Intent mIntent = new Intent(getContext(), OTPActivity.class);
                 mIntent.putExtra(SHARED_OBJ, example.getData().getUserDetails());
                 mIntent.putExtra(KEY_MODE, REQ_SIGN_UP);
                 getActivity().startActivityForResult(mIntent, REQ_OTP);
-
 
             }
 

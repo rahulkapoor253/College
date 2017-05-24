@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.skeleton.R;
+import com.skeleton.activity.HomeActivity;
 import com.skeleton.activity.OTPActivity;
 import com.skeleton.database.CommonData;
 import com.skeleton.model.Example;
@@ -136,7 +137,7 @@ public class SigninFragment extends BaseFragment {
     @Override
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Intent i = new Intent(getContext(), ProfileInfoActivty.class);
+        Intent i = new Intent(getContext(), HomeActivity.class);
         i.putExtra(SHARED_OBJ, mExample.getData().getUserDetails());
         startActivity(i);
 

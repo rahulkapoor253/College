@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.skeleton.R;
-import com.skeleton.activity.MainActivity;
+import com.skeleton.activity.HomeActivity;
 import com.skeleton.fragment.UserInfoFragment;
 import com.skeleton.model1.MainModel;
 
@@ -98,7 +98,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View v) {
-                    FragmentManager fm = ((MainActivity) mContext).getSupportFragmentManager();
+                    FragmentManager fm = ((HomeActivity) mContext).getSupportFragmentManager();
                     FragmentTransaction ft = fm.beginTransaction();
                     UserInfoFragment frag = new UserInfoFragment();
                     int adapterPos;

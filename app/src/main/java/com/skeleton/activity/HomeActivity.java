@@ -42,10 +42,7 @@ public class HomeActivity extends AppCompatActivity {
         mButton = (Button) findViewById(R.id.btn_click);
 
 
-
-
-
-        RestClient.getApiInterfaceNew().getUserData().enqueue(new ResponseResolver<List<MainModel>>(this, true) {
+        RestClient.getApiInterface().getUserData().enqueue(new ResponseResolver<List<MainModel>>(this, true) {
 
             @Override
             public void success(List<MainModel> mainModels) {

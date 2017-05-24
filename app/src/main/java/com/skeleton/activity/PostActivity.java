@@ -42,7 +42,7 @@ public class PostActivity extends AppCompatActivity {
 
 
 
-        RestClient.getApiInterfaceNew().getPosts(userId).enqueue(new ResponseResolver<List<Post>>(this, true) {
+        RestClient.getApiInterface().getPosts(userId).enqueue(new ResponseResolver<List<Post>>(this, true) {
             /**
              *
              * @param posts posts

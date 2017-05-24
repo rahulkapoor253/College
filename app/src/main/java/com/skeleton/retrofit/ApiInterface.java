@@ -31,8 +31,8 @@ import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
 public interface ApiInterface {
     String UPDATE_LOCATION = "api/v1/user/updateLocation";
 
-    String  SUB_URL_1_users = "users";
-    String SUB_URL_2_posts = "posts";
+    String  SUB_URL_1_users = "http://jsonplaceholder.typicode.com/users";
+    String SUB_URL_2_posts = "http://jsonplaceholder.typicode.com/posts";
 
     String SUB_URL_1 = "api/user/register";
     String SUB_URL_2 = "api/user/login";
