@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.skeleton.R;
 import com.skeleton.activity.OTPActivity;
-import com.skeleton.activity.ProfileInfoActivty;
 import com.skeleton.database.CommonData;
 import com.skeleton.model.Example;
 import com.skeleton.retrofit.APIError;

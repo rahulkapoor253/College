@@ -17,17 +17,7 @@ allprojects {
     repositories {
         jcenter()
     }
-    task checkstyle(type: Checkstyle) {
-        showViolations = true
-        configFile file("../checkStyleConfig/checkstyle.xml")
-        source 'src/main/java'
-        include '**/*.java'
-        exclude '**/gen/**'
-        exclude '**/constant/**'
-        exclude '**/R.java'
-        // empty classpath
-        classpath = files()
-    }
+    
 
     }
 

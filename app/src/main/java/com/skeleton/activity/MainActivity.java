@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity {
 
             case REQ_OTP:
                 if (resultCode == RESULT_OK) {
-                    intent = new Intent(MainActivity.this, ProfileInfoActivty.class);
+                    intent = new Intent(MainActivity.this, HomeActivity.class);
                     intent.putExtra(SHARED_OBJ, userDetails);
                     startActivity(intent);
                 }

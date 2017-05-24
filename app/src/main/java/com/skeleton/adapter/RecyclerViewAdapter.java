@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.skeleton.R;
-import com.skeleton.fragment.FragmentProfile2;
 import com.skeleton.model.profile2.ProfileCategory;
 
 import java.util.ArrayList;

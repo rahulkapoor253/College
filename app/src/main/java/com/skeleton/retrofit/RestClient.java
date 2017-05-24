@@ -60,6 +60,23 @@ public final class RestClient {
         return retrofit.create(ApiInterface.class);
     }
 
+    /**
+     * Gets api interface.
+     *
+     * @return object of ApiInterface
+     */
+    public static ApiInterface getApiInterfaceNew() {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(BuildConfig.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(httpClient().build())
+                    //.client(secureConnection().build())
+                    .build();
+        }
+        return retrofit.create(ApiInterface.class);
+    }
+
 
     /**
      * Gets retrofit builder.

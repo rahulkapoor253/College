@@ -4,8 +4,11 @@ package com.skeleton.retrofit;
 import com.skeleton.model.Example;
 import com.skeleton.model.profile1.DataConstant;
 import com.skeleton.model.profile2.ProfileExample;
+import com.skeleton.model1.MainModel;
+import com.skeleton.model1.Post;
 
 import java.util.HashMap;
+import java.util.List;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -28,12 +31,19 @@ import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
 public interface ApiInterface {
     String UPDATE_LOCATION = "api/v1/user/updateLocation";
 
+    String  SUB_URL_1_users = "users";
+    String SUB_URL_2_posts = "posts";
+
     String SUB_URL_1 = "api/user/register";
     String SUB_URL_2 = "api/user/login";
     String VERIFY_OTP = "api/user/verifyOTP";
     String VERIFY_ACCESS_TOKEN = "api/user/getProfile";
     String LIST_ITEMS = "api/profile/constants";
     String IMAGE_TEXT_ACCESS = "api/category/list";
+
+
+
+
 
 //    /**
 //     * @param map
@@ -139,6 +149,23 @@ public interface ApiInterface {
      */
     @GET(IMAGE_TEXT_ACCESS)
     Call<ProfileExample> getImageText(@Header(AUTHORIZATION) String mAccessToken, @Query("requestType") String request);
+
+    /**
+     *
+     * @return return
+     */
+    @GET(SUB_URL_1_users)
+    Call<List<MainModel>> getUserData();
+
+    /**
+     *
+     * @param userId userid
+     * @return return
+     */
+    @GET(SUB_URL_2_posts)
+    Call<List<Post>> getPosts(@Query("userId") int userId);
+
+
 
 
 }
