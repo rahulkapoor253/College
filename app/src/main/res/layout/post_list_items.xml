@@ -4,13 +4,13 @@
     android:weightSum="1"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:layout_marginTop="5dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:weightSum="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -19,24 +19,24 @@
             android:layout_margin="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:text="ID:"
             android:textColor="@color/black"
             />
         <TextView
             android:layout_margin="2dp"
             android:id="@+id/tv_uid"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="dummy_id"
+            android:textSize="14sp"
             />
 
         <TextView
             android:layout_margin="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:text="Title:"
             android:textColor="@color/black"
             />
@@ -45,15 +45,16 @@
             android:layout_margin="2dp"
             android:text="placeholder_title"
             android:id="@+id/tv_utitle"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
             />
 
         <TextView
             android:layout_margin="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:text="Description:"
             android:textColor="@color/black"
             />
@@ -62,8 +63,9 @@
             android:layout_margin="2dp"
             android:text="placeholder_describe"
             android:id="@+id/tv_udescribe"
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textSize="14sp"
             />
 
 
