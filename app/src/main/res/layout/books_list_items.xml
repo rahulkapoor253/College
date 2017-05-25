@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+    >
+
+    <LinearLayout
+        android:id="@+id/ll_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="2dp"
+        >
+
+        <TextView
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID:"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            />
+
+        <TextView
+            android:layout_margin="2dp"
+            android:id="@+id/tv_id_books"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dummy_id"
+            android:textSize="24sp"
+            />
+
+        <TextView
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Title:"
+            android:textSize="24sp"
+            />
+
+        <TextView
+            android:layout_margin="2dp"
+            android:textSize="24sp"
+            android:id="@+id/tv_title_books"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dummy_title"
+            />
+
+        <TextView
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Page Count:"
+            android:textSize="24sp"
+            />
+
+        <TextView
+            android:layout_margin="2dp"
+            android:textSize="24sp"
+            android:id="@+id/tv_page_count_books"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dummy_title"
+            />
+
+        <TextView
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Describe:"
+            android:textSize="24sp"
+            />
+
+        <TextView
+            android:layout_margin="2dp"
+            android:textSize="24sp"
+            android:id="@+id/tv_describe_books"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dummy_title"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

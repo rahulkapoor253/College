@@ -8,24 +8,43 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_margin="2dp"
         >
 
         <TextView
-            android:id="@+id/tv_id"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="placeholder_id"
-            android:layout_weight="0.2"
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/textViewQuality"
+            android:text="ID:"
             android:textSize="24sp"
             />
 
         <TextView
-            android:textSize="24sp"
-            android:id="@+id/tv_username"
-            android:layout_width="0dp"
-            android:layout_weight="0.8"
+            android:layout_margin="2dp"
+            android:id="@+id/tv_id"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="placeholder_username"
+            android:text="dummy_id"
+            android:textSize="24sp"
+            />
+
+        <TextView
+            android:layout_margin="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/textViewQuality"
+            android:text="Title:"
+            android:textSize="24sp"
+            />
+
+        <TextView
+            android:layout_margin="2dp"
+            android:textSize="24sp"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="dummy_title"
             />
 
 

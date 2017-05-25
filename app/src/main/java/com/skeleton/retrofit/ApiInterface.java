@@ -4,8 +4,8 @@ package com.skeleton.retrofit;
 import com.skeleton.model.Example;
 import com.skeleton.model.profile1.DataConstant;
 import com.skeleton.model.profile2.ProfileExample;
+import com.skeleton.model1.Books;
 import com.skeleton.model1.MainModel;
-import com.skeleton.model1.Post;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,8 +31,8 @@ import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
 public interface ApiInterface {
     String UPDATE_LOCATION = "api/v1/user/updateLocation";
 
-    String  SUB_URL_1_users = "http://jsonplaceholder.typicode.com/users";
-    String SUB_URL_2_posts = "http://jsonplaceholder.typicode.com/posts";
+    String  SUB_URL_1_users = "http://fakerestapi.azurewebsites.net/api/Activities";
+    String SUB_URL_2_posts = "http://fakerestapi.azurewebsites.net/api/Books";
 
     String SUB_URL_1 = "api/user/register";
     String SUB_URL_2 = "api/user/login";
@@ -152,18 +152,17 @@ public interface ApiInterface {
 
     /**
      *
-     * @return return
+     * @return return users
      */
     @GET(SUB_URL_1_users)
     Call<List<MainModel>> getUserData();
 
     /**
      *
-     * @param userId userid
-     * @return return
+     * @return return books;
      */
     @GET(SUB_URL_2_posts)
-    Call<List<Post>> getPosts(@Query("userId") int userId);
+    Call<List<Books>> getBooks();
 
 
 
